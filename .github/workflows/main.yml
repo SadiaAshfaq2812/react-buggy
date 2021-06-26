@@ -12,7 +12,7 @@ jobs:
     steps:        
        - uses: actions/checkout@master
        - name: trufflehog-actions-scan
-         uses: SadiaAshfaq2812/trufflehog-actions-scan@master
+         uses: sadiaashfaq2812/trufflehog-actions-scan@master
          with:
           branch: ${{ github.head_ref }}
           # using scanArguments with entropy=true to consider regexes rules for credentials evaluations

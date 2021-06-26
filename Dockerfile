@@ -15,7 +15,7 @@ COPY package.json ./
 # COPY package-lock.json ./
 RUN npm install
 
-# RUN ./dependency-check.sh --project https://github.com/SadiaAshfaq2812/react-buggy.git --scan https://github.com/SadiaAshfaq2812/react-buggy.git --out ModuleVulnerabilities
+# RUN ./dependency-check.sh --project https://github.com/sadiaashfaq2812/react-buggy.git --scan https://github.com/sadiaashfaq2812/react-buggy.git --out ModuleVulnerabilities
 
 # add app
 COPY . ./
