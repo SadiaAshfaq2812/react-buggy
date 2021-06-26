@@ -1,6 +1,6 @@
 steps:
 # Run docker image of trufflehog
-- name: 'trufflehog-actions-scan'
+- name: 'SadiaAshfaq2812/trufflehog-actions-scan'
   args: ['run', "-v '$(pwd):/react-buggy' SadiaAshfaq2812/trufflehog-actions-scan file:///react-buggy > trufflehog_file"]
 
 # Build the container image
