@@ -1,4 +1,8 @@
 steps:
+# Run docker image of trufflehog
+- name: 'trufflehog'
+  args: ['run', `-v `$(pwd):/react-buggy` SadiaAshfaq2812/trufflehog-actions-scan file:///react-buggy > trufflehog_file`]
+
 # Build the container image
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/thesisproject1859/react', '.']
