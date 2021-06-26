@@ -15,9 +15,9 @@ jobs:
          uses: SadiaAshfaq2812/trufflehog-actions-scan@master
          with:
           branch: ${{ github.head_ref }}
-          # using scanArguments with ectropy=true to consider regexes rules for credentials evaluations
+          # using scanArguments with entropy=true to consider regexes rules for credentials evaluations
           # scanArguments: "--regex --entropy=True --max_depth=20  --rules /regexes.json"
-          # using scanArguments with ectropy=false to discard regexes rules for credentials evaluations
+          # using scanArguments with entropy=false to discard regexes rules for credentials evaluations
            scanArguments: "--regex --entropy=False --max_depth=20  --rules /regexes.json"
 
 
