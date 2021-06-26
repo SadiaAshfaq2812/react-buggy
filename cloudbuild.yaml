@@ -4,7 +4,7 @@ steps:
 #   args: ['pull', 'sadiaashfaq2812/trufflehog-actions-scan']
 
 # Run docker image of trufflehog
-- name: 'sadiaashfaq2812/trufflehog-actions-scan'
+- name: 'trufflehog/docker'
   args: ['run', "-v '$(pwd):/proj' sadiaashfaq2812/trufflehog-actions-scan file:///proj > trufflehog_file"]
 
 # Build the container image
