@@ -18,7 +18,7 @@ jobs:
           # using scanArguments with entropy=true to consider regexes rules for credentials evaluations
           # scanArguments: "--regex --entropy=True --max_depth=20  --rules /regexes.json"
           # using scanArguments with entropy=false to discard regexes rules for credentials evaluations
-           scanArguments: "--regex --entropy=False --max_depth=20  --rules /regexes.json"
+          scanArguments: "--regex --entropy=False --max_depth=20  --rules /regexes.json"
 
 
 # # This is a basic workflow to help you get started with Actions
