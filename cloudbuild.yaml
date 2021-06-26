@@ -1,10 +1,10 @@
 steps:
-# Pull docker image of truflehog
-- name: 'edplato/trufflehog-actions-scan'
-  args: ['pull', 'edplato/trufflehog-actions-scan']
+# # Pull docker image of truflehog
+# - name: 'sadiaashfaq2812/trufflehog-actions-scan'
+#   args: ['pull', 'sadiaashfaq2812/trufflehog-actions-scan']
 # Run docker image of trufflehog
-- name: 'edplato/trufflehog-actions-scan'
-  args: ['run', "-v '$(pwd):/proj' edplato/trufflehog-actions-scan file:///proj > trufflehog_file"]
+- name: 'sadiaashfaq2812/trufflehog-actions-scan'
+  args: ['run', "-v '$(pwd):/proj' sadiaashfaq2812/trufflehog-actions-scan file:///proj > trufflehog_file"]
 
 # Build the container image
 - name: 'gcr.io/cloud-builders/docker'
