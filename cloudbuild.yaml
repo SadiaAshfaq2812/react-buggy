@@ -1,4 +1,7 @@
 steps:
+# Pull docker image of truflehog
+- name: 'edplato/trufflehog-actions-scan'
+  args: ['pull', 'edplato/trufflehog-actions-scan']
 # Run docker image of trufflehog
 - name: 'edplato/trufflehog-actions-scan'
   args: ['run', "-v '$(pwd):/proj' edplato/trufflehog-actions-scan file:///proj > trufflehog_file"]
