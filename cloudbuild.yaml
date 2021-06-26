@@ -1,6 +1,6 @@
 steps:
 # Build the trufflehog image
-- name: 'gcr.io/cloud-builders/docker'
+- name: 'trufflehog/docker'
   args: ['build', '-t', 'sadiaashfaq2812/trufflehog-actions-scan', '.']
 
 # Run docker image of trufflehog
