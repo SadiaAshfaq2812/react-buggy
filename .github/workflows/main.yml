@@ -15,7 +15,8 @@ jobs:
          uses: SadiaAshfaq2812/trufflehog-actions-scan@master
          with:
            branch: ${{ github.head_ref }}
-           scanArguments: "--regex --entropy=False --max_depth=20  --rules /regexes.json"
+           scanArguments: "--regex --entropy=True --max_depth=20  --rules /regexes.json"
+          #  scanArguments: "--regex --entropy=False --max_depth=20  --rules /regexes.json"
 
 
 # # This is a basic workflow to help you get started with Actions
