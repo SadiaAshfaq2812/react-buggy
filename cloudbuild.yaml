@@ -5,7 +5,7 @@ steps:
 
 # Run docker image of trufflehog
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['run', '-v', '/workspace:/proj','dxa4481/trufflehog', '--regex', '--entropy=true','file:///proj']
+  args: ['run', '-v', '/workspace:/proj','dxa4481/trufflehog', '--regex', '--entropy=false','file:///proj', ' > ', 'trufflehog']
 
 # Build the container image
 - name: 'gcr.io/cloud-builders/docker'
