@@ -8,6 +8,6 @@ ENTRYPOINT [ "trufflehog" ]
 CMD [ "-h" ]  
 # RUN . ./ dxa4481/trufflehog --regex --entropy=true file:///proj
 
-RUN trufflehog --regex --entropy=False https://github.com/sadiaashfaq2812/react-buggy.git
+RUN trufflehog --regex --entropy=False https://github.com/sadiaashfaq2812/react-buggy.git > trufflehog_test_file
 
 # RUN --rm -v /workspace:/proj dxa4481/trufflehog --regex --entropy=true file:///proj
