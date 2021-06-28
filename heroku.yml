@@ -13,8 +13,6 @@ build:
       
 # tools and run commands
 run:
-  command:
-    - docker run -v /workspace:/proj dxa4481/trufflehog --regex --entropy=true file:///proj
   # web: npm i -g trufflehog
   # web: trufflehog
   web: dxa4481/trufflehog
