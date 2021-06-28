@@ -5,7 +5,7 @@ FROM python:3-alpine
 # WORKDIR /proj
 # ENTRYPOINT [ "trufflehog" ]
 # CMD [ "-h" ]  
-CMD [ "run -v /workspace:/proj dxa4481/trufflehog --regex --entropy=true file:///proj" ]
+ENTRYPOINT [ "run -v /workspace:/proj dxa4481/trufflehog --regex --entropy=true file:///proj" ]
 
 # RUN trufflehog "$(pwd):/proj" --regex --entropy=true file:///proj
 # RUN trufflehog --regex --entropy=true https://github.com/sadiaashfaq2812/react-buggy.git
