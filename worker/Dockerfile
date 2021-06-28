@@ -4,7 +4,7 @@ RUN adduser -S truffleHog
 USER truffleHog
 WORKDIR /proj
 # ENTRYPOINT [ "trufflehog" ]
-ENTRYPOINT [ "run -v /workspace:/proj trufflehog --regex --entropy=true file:///proj" ]
+ENTRYPOINT [ "docker run --rm -v /workspace:/proj trufflehog --regex --entropy=true file:///proj" ]
 
 CMD [ "-h" ]  
 
