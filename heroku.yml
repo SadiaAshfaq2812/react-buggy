@@ -7,9 +7,10 @@ build:
   #   - truffleHog --regex --entropy=False https://github.com/sadiaashfaq2812/react-buggy.git
   docker:
     web: Dockerfile
+    - run -v /workspace:/proj dxa4481/trufflehog --regex --entropy=true file:///proj
     # web: truffleHog --regex --entropy=False https://github.com/dxa4481/truffleHog.git
     # web: docker pull gesellix/trufflehog
-  # - docker run gesellix/trufflehog --json --regex https://github.com/sadiaashfaq2812/react-buggy.git > trufflehog
+  # - run gesellix/trufflehog --json --regex https://github.com/sadiaashfaq2812/react-buggy.git > trufflehog
       
 # tools and run commands
 run:
