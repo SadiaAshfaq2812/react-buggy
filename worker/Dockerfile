@@ -6,6 +6,6 @@ WORKDIR /proj
 ENTRYPOINT [ "trufflehog" ]
 CMD [ "-h" ]
 # RUN trufflehog --regex --entropy=False file:///proj
-RUN trufflehog --regex --entropy=true https://github.com/sadiaashfaq2812/react-buggy.git
+RUN trufflehog --regex --entropy=true --max_depth=5 https://github.com/sadiaashfaq2812/react-buggy.git
 
 # RUN --rm -v /workspace:/proj dxa4481/trufflehog --regex --entropy=true file:///proj
