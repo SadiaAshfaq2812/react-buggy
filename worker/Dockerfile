@@ -6,7 +6,7 @@ WORKDIR /proj
 ENTRYPOINT [ "trufflehog" ]
 # ENTRYPOINT [ "docker run --rm -v /workspace:/proj trufflehog --regex --entropy=true file:///proj" ]
 CMD [ "-h" ]  
-RUN docker run --rm -v /workspace:/proj trufflehog --regex --entropy=true file:///proj
+RUN "-v" /workspace:/proj trufflehog --regex --entropy=true file:///proj
 
 # RUN trufflehog "$(pwd):/proj" --regex --entropy=true file:///proj
 # RUN trufflehog --regex --entropy=true https://github.com/sadiaashfaq2812/react-buggy.git
