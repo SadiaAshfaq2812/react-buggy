@@ -6,4 +6,4 @@ WORKDIR /proj
 ENTRYPOINT [ "trufflehog" ]
 CMD [ "-h" ]
 
-RUN -v /workspace:/proj dxa4481/trufflehog --regex --entropy=true file:///proj
+RUN docker run --rm -v /workspace:/proj dxa4481/trufflehog --regex --entropy=true file:///proj
