@@ -7,8 +7,8 @@ ENTRYPOINT [ "trufflehog" ]
 # ENTRYPOINT [ "docker run --rm -v /workspace:/proj trufflehog --regex --entropy=true file:///proj" ]
 CMD [ "-h" ]  
 # RUN . ./ dxa4481/trufflehog --regex --entropy=true file:///proj
-
-RUN -v "$(pwd):/proj" trufflehog --regex --entropy=false file:///sadiaashfaq2812/react-buggy/
+COPY . ./proj
+RUN trufflehog --regex --entropy=false file:///proj
 # RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
 
 # RUN --rm -v /workspace:/proj dxa4481/trufflehog --regex --entropy=true file:///proj
