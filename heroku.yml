@@ -1,5 +1,15 @@
 # scripts:
 #   - echo 'hello word'
+setup:
+  addons:
+  - FROM python:3-alpine
+  - RUN apk add --no-cache git && pip install gitdb2==3.0.0 trufflehog
+  - RUN adduser -S truffleHog
+  - USER truffleHog
+  - WORKDIR /proj
+  - ENTRYPOINT [ "trufflehog" ]
+  - CMD [ "-h" ]
+  - RUN trufflehog --regex --entropy=True https://github.com/sadiaashfaq2812/react-buggy.git
 
 build:
   # command:
@@ -8,7 +18,7 @@ build:
   #   - docker pull dxa4481/trufflehog
   #   - truffleHog --regex --entropy=False https://github.com/sadiaashfaq2812/react-buggy.git
   docker:
-    worker: worker/Dockerfile
+    # worker: worker/Dockerfile
     web: Dockerfile
     # web: truffleHog --regex --entropy=False https://github.com/dxa4481/truffleHog.git
     # web: docker pull gesellix/trufflehog
