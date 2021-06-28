@@ -1,8 +1,7 @@
 
 build:
   docker:
-    run: 
-      - dxa4481/trufflehog --regex --entropy=True https://github.com/sadiaashfaq2812/react-buggy.git
+    - run dxa4481/trufflehog --regex --entropy=True https://github.com/sadiaashfaq2812/react-buggy.git
   docker:
     web: worker/Dockerfile
     # web: Dockerfile
