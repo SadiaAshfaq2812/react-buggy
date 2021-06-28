@@ -2,11 +2,11 @@
 #   - echo 'hello word'
 
 build:
+  - docker run -v /workspace:/proj dxa4481/trufflehog --regex --entropy=true file:///proj
   # script:
   #   - docker pull dxa4481/trufflehog
   #   - truffleHog --regex --entropy=False https://github.com/sadiaashfaq2812/react-buggy.git
   docker:
-    web: run -v /workspace:/proj dxa4481/trufflehog --regex --entropy=true file:///proj
     web: Dockerfile
     # web: truffleHog --regex --entropy=False https://github.com/dxa4481/truffleHog.git
     # web: docker pull gesellix/trufflehog
