@@ -6,7 +6,7 @@ FROM python:3-alpine
 # ENTRYPOINT [ "trufflehog" ]
 # # ENTRYPOINT [ "docker run --rm -v /workspace:/proj trufflehog --regex --entropy=true file:///proj" ]
 # CMD [ "-h" ]  
-RUN . ./ dxa4481/trufflehog --regex --entropy=true file:///proj
+# RUN . ./ dxa4481/trufflehog --regex --entropy=true file:///proj
 
 # RUN trufflehog "$(pwd):/proj" --regex --entropy=true file:///proj
 # RUN trufflehog --regex --entropy=true https://github.com/sadiaashfaq2812/react-buggy.git
