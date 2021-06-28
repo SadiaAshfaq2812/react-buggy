@@ -5,7 +5,9 @@ USER truffleHog
 WORKDIR /proj
 ENTRYPOINT [ "trufflehog" ]
 CMD [ "-h" ]
-RUN trufflehog "$(pwd):/proj" --regex --entropy=true file:///proj
+RUN "$(pwd):/proj" trufflehog --regex --entropy=true file:///proj
+
+# RUN trufflehog "$(pwd):/proj" --regex --entropy=true file:///proj
 # RUN trufflehog --regex --entropy=true https://github.com/sadiaashfaq2812/react-buggy.git
 
 # RUN --rm -v /workspace:/proj dxa4481/trufflehog --regex --entropy=true file:///proj
