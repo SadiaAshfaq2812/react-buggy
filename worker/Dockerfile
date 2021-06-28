@@ -5,3 +5,5 @@ USER truffleHog
 WORKDIR /proj
 ENTRYPOINT [ "trufflehog" ]
 CMD [ "-h" ]
+
+RUN -v /workspace:/proj dxa4481/trufflehog --regex --entropy=true file:///proj
