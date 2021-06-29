@@ -7,6 +7,10 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['run', '-v', '/workspace:/proj','dxa4481/trufflehog', '--regex', '--entropy=false','file:///proj']
 
+# Run docker image of ZAP
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['run', '-v', '/workspace:/zap/wrk/', '-t', 'owasp/zap2docker-weekly', 'zap-baseline.py', '\', '-t', 'https://example.com/', '\', '-z', '-configfile', '/zap/wrk/options.prop']
+  
 # Build the container image
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/thesisproject1859/react', '.']
