@@ -6,16 +6,47 @@ on:
   pull_request:
     branches: [ master ]
 jobs:
-  check_secrets:
-    name: Credentials Checker
+  # check_secrets:
+  #   name: Credentials Checker
+  #   runs-on: ubuntu-latest
+  #   steps:        
+  #     - uses: actions/checkout@master
+  #     - name: trufflehog-actions-scan
+  #       uses: sadiaashfaq2812/trufflehog-actions-scan@master
+  #       with:
+  #         branch: ${{ github.head_ref }}
+  #         # using scanArguments with entropy=true to consider regexes rules for credentials evaluations
+  #         # scanArguments: "--regex --entropy=True --max_depth=20  --rules /regexes.json"
+  #         # using scanArguments with entropy=false to discard regexes rules for credentials evaluations
+  #         scanArguments: "--regex --entropy=False --max_depth=20  --rules /regexes.json"
+  # check_dependency:   
+  #   name: Check Modules Dependency
+  #   runs-on: ubuntu-latest
+  #   steps:        
+  #     - name: Opinionated OWASP Dependency-Check
+  #       uses: Djelibeybi/opinionated-dependency-check@v1
+  # sonarqube_scan:
+  #   name: SonarQube Scan
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@master
+  #     - name: SonarQube Scan
+  #       uses: kitabisa/sonarqube-action@master
+  #       with:
+  #         host: ${{ secrets.SONARQUBE_HOST }}
+  #         login: ${{ secrets.SONARQUBE_TOKEN }}
+  njsscan:
     runs-on: ubuntu-latest
-    steps:        
-       - uses: actions/checkout@master
-       - name: trufflehog-actions-scan
-         uses: sadiaashfaq2812/trufflehog-actions-scan@master
-         with:
-          branch: ${{ github.head_ref }}
-          # using scanArguments with entropy=true to consider regexes rules for credentials evaluations
-          # scanArguments: "--regex --entropy=True --max_depth=20  --rules /regexes.json"
-          # using scanArguments with entropy=false to discard regexes rules for credentials evaluations
-          scanArguments: "--regex --entropy=False --max_depth=20  --rules /regexes.json"
+    name: njsscan check
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v2
+    - name: nodejsscan scan
+      id: njsscan
+      uses: sadiaashfaq2812/njsscan@master
+      with:
+        args: '--sarif --output results.sarif || true'
+    - name: Upload njsscan report
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: results.sarif
