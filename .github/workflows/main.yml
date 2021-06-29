@@ -43,6 +43,6 @@ jobs:
       uses: actions/checkout@v2
     - name: nodejsscan scan
       id: njsscan
-      uses: sadiaashfaq2812/react-buggy@master
+      uses: sadiaashfaq2812/njsscan@master
       with:
         args: '.'
