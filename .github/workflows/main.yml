@@ -10,6 +10,7 @@ jobs:
     name: Run Owasp through sh file
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@master
       - name: OWASP-Dependency-Check
         uses: ./dependency-check/bin/dependency-check.sh --project ./react-buggy --scan ../../react-buggy --out ModuleVulnerabilities
   # check_secrets:
