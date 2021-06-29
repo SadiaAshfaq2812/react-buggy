@@ -27,6 +27,6 @@ jobs:
   #       uses: Djelibeybi/opinionated-dependency-check@v1
   sonarqube_scan:
     steps:
-      - name: SonarQube Actions
-        uses: achilleslinux/sonarqube-actions@achilleslinux
+      - name: SonarQube Scan
+        uses: kitabisa/sonarqube-action@v1.1.0
 
