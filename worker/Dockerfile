@@ -4,11 +4,5 @@ RUN adduser -S truffleHog
 USER truffleHog
 WORKDIR /proj
 ENTRYPOINT [ "trufflehog" ]
-# ENTRYPOINT [ "docker run --rm -v /workspace:/proj trufflehog --regex --entropy=true file:///proj" ]
 CMD [ "-h" ]  
-# RUN . ./ dxa4481/trufflehog --regex --entropy=true file:///proj
-COPY . ./
-RUN trufflehog --regex --entropy=false file:///react-buggy
-# RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
-
-# RUN --rm -v /workspace:/proj dxa4481/trufflehog --regex --entropy=true file:///proj
+RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
