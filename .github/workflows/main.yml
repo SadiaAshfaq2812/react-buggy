@@ -55,9 +55,10 @@ jobs:
     runs-on: ubuntu-latest
     name: Scan the react js application
     steps:
-      - name: OWASP ZAP Baseline Scan
-        uses: zaproxy/action-baseline@v0.4.0
-
+      - name: ZAP Scan
+        uses: zaproxy/action-baseline@v0.3.0
+        with:
+          target: 'https://www.zaproxy.org/'
     # Steps for advance scan
     # steps:
     #   - name: Checkout
@@ -71,5 +72,5 @@ jobs:
     #       docker_name: 'owasp/zap2docker-stable'
     #       target: 'https://www.zaproxy.org/'
     #       rules_file_name: '.zap/rules.tsv'
-    #       cmd_options: '-a'
+    #       cmd_options: '-z "-configFile /zap/wrk/options.prop"'
 
