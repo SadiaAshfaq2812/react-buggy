@@ -6,6 +6,12 @@ on:
   pull_request:
     branches: [ master ]
 jobs:
+  run_owasp:
+    name: Run Owasp through sh file
+    runs-on: ubuntu-latest
+    steps:
+      - name: OWASP-Dependency-Check
+        uses: ./dependency-check.sh --project ./react-buggy --scan https://github.com/sadiaashfaq2812/react-buggy.git --out ModuleVulnerabilities
   # check_secrets:
   #   name: Credentials Checker
   #   runs-on: ubuntu-latest
