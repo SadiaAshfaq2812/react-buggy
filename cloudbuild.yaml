@@ -9,7 +9,7 @@ steps:
 
 # Run docker image of ZAP
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['run', '-t', 'owasp/zap2docker-stable', 'zap-baseline.py', '-t', 'https://www.example.com']
+  args: ['run', '-t', 'owasp/zap2docker-stable', 'zap-baseline.py', '-t', 'https://react-eop2gprqzq-uc.a.run.app']
 
 
   # args: ['run', '-v', '/workspace:/zap/wrk/', '-t', 'owasp/zap2docker-weekly', 'zap-baseline.py', '\', '-t', 'https://example.com/', '\', '-z', '-configfile', '/zap/wrk/options.prop']
