@@ -19,10 +19,14 @@ jobs:
   #         # scanArguments: "--regex --entropy=True --max_depth=20  --rules /regexes.json"
   #         # using scanArguments with entropy=false to discard regexes rules for credentials evaluations
   #         scanArguments: "--regex --entropy=False --max_depth=20  --rules /regexes.json"
-  check_dependency:   
-    name: Check Modules Dependency
-    runs-on: ubuntu-latest
-    steps:        
-      - name: Opinionated OWASP Dependency-Check
-        uses: Djelibeybi/opinionated-dependency-check@v1
+  # check_dependency:   
+  #   name: Check Modules Dependency
+  #   runs-on: ubuntu-latest
+  #   steps:        
+  #     - name: Opinionated OWASP Dependency-Check
+  #       uses: Djelibeybi/opinionated-dependency-check@v1
+  sonarqube_scan:
+    steps:
+      - name: SonarQube Actions
+        uses: achilleslinux/sonarqube-actions@achilleslinux
 
