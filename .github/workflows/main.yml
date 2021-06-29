@@ -23,5 +23,6 @@ jobs:
     name: Check Modules Dependency
     runs-on: ubuntu-latest
     steps:        
-      - name: OWASP Dependency Track check
-        uses: Quobis/action-owasp-dependecy-track-check@v1.1-beta
+      - name: Opinionated OWASP Dependency-Check
+        uses: Djelibeybi/opinionated-dependency-check@v1
+
