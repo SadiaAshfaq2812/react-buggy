@@ -24,4 +24,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:        
       - name: OWASP Dependency Track check
-        uses: sadiaashfaq2812/react-buggy@master
+        uses: Quobis/action-owasp-dependecy-track-check@v1.1-beta
