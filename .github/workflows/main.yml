@@ -25,11 +25,24 @@ jobs:
   #   steps:        
   #     - name: Opinionated OWASP Dependency-Check
   #       uses: Djelibeybi/opinionated-dependency-check@v1
-  sonarqube_scan:
-    name: SonarQube Scan
+  # sonarqube_scan:
+  #   name: SonarQube Scan
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@master
+  #     - name: SonarQube Scan
+  #       uses: kitabisa/sonarqube-action@master
+  #       with:
+  #         host: ${{ secrets.SONARQUBE_HOST }}
+  #         login: ${{ secrets.SONARQUBE_TOKEN }}
+  njsscan:
     runs-on: ubuntu-latest
+    name: njsscan check
     steps:
-      - name: Acunetix 360 Scan
-        uses: Acunetix360/Acunetix-360-GitHub-Actions@v0.0.1
-
-
+    - name: Checkout the code
+      uses: actions/checkout@v2
+    - name: nodejsscan scan
+      id: njsscan
+      uses: ajinabraham/njsscan-action@master
+      with:
+        args: '.'
