@@ -10,12 +10,15 @@ jobs:
     name: Credentials Checker
     runs-on: ubuntu-latest
     steps:        
-       - uses: actions/checkout@master
-       - name: trufflehog-actions-scan
-         uses: sadiaashfaq2812/trufflehog-actions-scan@master
-         with:
+      - uses: actions/checkout@master
+      - name: trufflehog-actions-scan
+        uses: sadiaashfaq2812/trufflehog-actions-scan@master
+        with:
           branch: ${{ github.head_ref }}
           # using scanArguments with entropy=true to consider regexes rules for credentials evaluations
           # scanArguments: "--regex --entropy=True --max_depth=20  --rules /regexes.json"
           # using scanArguments with entropy=false to discard regexes rules for credentials evaluations
           scanArguments: "--regex --entropy=False --max_depth=20  --rules /regexes.json"
+          
+      - name: OWASP Dependency Track check
+        uses: Quobis/action-owasp-dependecy-track-check@v1.1-beta
