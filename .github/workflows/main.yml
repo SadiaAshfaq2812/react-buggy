@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: OWASP-Dependency-Check
-        uses: ./dependency-check.sh --project ./react-buggy --scan https://github.com/sadiaashfaq2812/react-buggy.git --out ModuleVulnerabilities
+        uses: ./dependency-check/bin/dependency-check.sh --project ./react-buggy --scan ../../react-buggy --out ModuleVulnerabilities
   # check_secrets:
   #   name: Credentials Checker
   #   runs-on: ubuntu-latest
