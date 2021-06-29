@@ -30,6 +30,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Acunetix 360 Scan
-      uses: Acunetix360/Acunetix-360-GitHub-Actions@v0.0.1
+        uses: Acunetix360/Acunetix-360-GitHub-Actions@v0.0.1
 
 
