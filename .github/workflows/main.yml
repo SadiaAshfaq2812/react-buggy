@@ -26,6 +26,8 @@ jobs:
   #     - name: Opinionated OWASP Dependency-Check
   #       uses: Djelibeybi/opinionated-dependency-check@v1
   sonarqube_scan:
+    name: SonarQube Scan
+    runs-on: ubuntu-latest
     steps:
       - name: SonarQube Scan
         uses: kitabisa/sonarqube-action@v1.1.0
