@@ -13,6 +13,6 @@ FROM python:3-alpine
 # # RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
 
 # ENTRYPOINT [ "./dependency-check-script.sh" ]
-WORKDIR /app
+WORKDIR /proj
 RUN pwd
 RUN ./dependency-check-script.bash
