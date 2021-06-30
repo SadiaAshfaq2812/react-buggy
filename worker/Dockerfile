@@ -9,7 +9,7 @@ COPY . ./
 ENTRYPOINT [ "trufflehog" ]
 CMD [ "-h" ]  
 
-RUN VOLUME $(pwd) trufflehog --regex --entropy=true file:///proj
+RUN VOLUME /proj trufflehog --regex --entropy=true file:///proj
 # # RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
 
 # ENTRYPOINT [ "./dependency-check-script.sh" ]
