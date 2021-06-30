@@ -6,39 +6,39 @@ on:
   pull_request:
     branches: [ master ]
 jobs:
-  dependencycheck:
-    stage: security
-    variables:
-      SCAN_TYPE: scan_type="Dependency Check" 
-      REPORT: gl-dependency-check-report.xml
-    image:
-        name: owasp/dependency-check
-        entrypoint: [""] 
-    script:
-        - /usr/share/dependency-check/bin/dependency-check.sh -v
-          --format XML 
-          --enableExperimental 
-          --suppression=$CI_PROJECT_DIR/dependency_check_suppressions.xml
-          --scan=$CI_PROJECT_DIR
-          --out=$REPORT
-    artifacts:
-      paths:
-        - $REPORT         
-    after_script:
-      - apk add --no-cache curl
-      - curl -v -X POST "${DOJO_URL}" 
-        --header "${DOJO_AUTH}" 
-        --header "${DOJO_CONTENT}" 
-        --form "${ENGAGEMENT}" 
-        --form 'verified="true"' 
-        --form 'active="true"' 
-        --form 'lead="1"' 
-        --form 'tags="gitlab"' 
-        --form "${SCAN_TYPE}" 
-        --form 'minimum_severity="Info"' 
-        --form 'skip_duplicates="true"' 
-        --form 'close_old_findings="false"' 
-        --form 'file=@"gl-dependency-check-report.xml"'  
+  # dependencycheck:
+  #   stage: security
+  #   variables:
+  #     SCAN_TYPE: scan_type="Dependency Check" 
+  #     REPORT: gl-dependency-check-report.xml
+  #   image:
+  #       name: owasp/dependency-check
+  #       entrypoint: [""] 
+  #   script:
+  #       - /usr/share/dependency-check/bin/dependency-check.sh -v
+  #         --format XML 
+  #         --enableExperimental 
+  #         --suppression=$CI_PROJECT_DIR/dependency_check_suppressions.xml
+  #         --scan=$CI_PROJECT_DIR
+  #         --out=$REPORT
+  #   artifacts:
+  #     paths:
+  #       - $REPORT         
+  #   after_script:
+  #     - apk add --no-cache curl
+  #     - curl -v -X POST "${DOJO_URL}" 
+  #       --header "${DOJO_AUTH}" 
+  #       --header "${DOJO_CONTENT}" 
+  #       --form "${ENGAGEMENT}" 
+  #       --form 'verified="true"' 
+  #       --form 'active="true"' 
+  #       --form 'lead="1"' 
+  #       --form 'tags="gitlab"' 
+  #       --form "${SCAN_TYPE}" 
+  #       --form 'minimum_severity="Info"' 
+  #       --form 'skip_duplicates="true"' 
+  #       --form 'close_old_findings="false"' 
+  #       --form 'file=@"gl-dependency-check-report.xml"'  
 
   # run_owasp:
   #   name: Run Owasp through sh file
