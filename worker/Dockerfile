@@ -7,5 +7,5 @@ COPY . ./
 ENTRYPOINT [ "trufflehog" ]
 CMD [ "-h" ]  
 
-RUN '-v' /workspace:/proj trufflehog --regex --entropy=false file:///proj
+RUN -v workspace:/proj trufflehog --regex --entropy=false file:///proj
 # RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
