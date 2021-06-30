@@ -1,6 +1,6 @@
 steps:
 - name: "gcr.io/cloud-builders/gcloud"
-  entrypoint: 'bash'
+  entrypoint: '/bin/bash'
   args: ['bash', './dependency-check-script.bash']
   # args: ['-c','./dependency-check/bin/dependency-check.sh', '--project', 'gcr.io/thesisproject1859/react', '--scan', '/react-buggy', '--out', 'ModuleVulnerabilities']
 # # Build the trufflehog image
