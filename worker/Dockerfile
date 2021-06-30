@@ -10,6 +10,7 @@ RUN cd ..
 # RUN pwd
 # RUN chmod +x ./proj
 RUN ls -F
+RUN trufflehog file:///proj
 # RUN chmod +x ./dependency-check.sh
 # RUN $(pwd) trufflehog --regex --entropy=false file:///proj
 # RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
