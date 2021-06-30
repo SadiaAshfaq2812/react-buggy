@@ -4,9 +4,9 @@ RUN adduser -S truffleHog
 USER truffleHog
 WORKDIR /proj
 COPY . ./
-# ENTRYPOINT [ "trufflehog" ]
+ENTRYPOINT [ "trufflehog" ]
 CMD [ "-h" ]  
 
 # RUN pwd
-RUN trufflehog --regex --entropy=false $(pwd)
+RUN $(pwd) trufflehog --regex --entropy=false file:///proj
 # RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
