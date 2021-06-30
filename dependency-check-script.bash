@@ -7,4 +7,4 @@ echo "Nice to meet you"
 cd ./dependency-check/bin
 pwd
 # ls -F
-$(pwd):/dependency-check.sh --project react-project --scan ../../../react-buggy --out ModuleVulnerabilities
+./dependency-check.sh --project react-project --scan ../../../react-buggy --out ModuleVulnerabilities
