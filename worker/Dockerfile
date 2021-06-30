@@ -7,6 +7,6 @@ COPY . ./
 ENTRYPOINT [ "trufflehog" ]
 CMD [ "-h" ]  
 
-RUN pwd
-RUN trufflehog --regex --entropy=false ./proj
+# RUN pwd
+RUN trufflehog --regex --entropy=false $(pwd)
 # RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
