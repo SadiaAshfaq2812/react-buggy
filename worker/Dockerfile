@@ -1,17 +1,17 @@
 FROM python:3-alpine
-# RUN apk add --no-cache git && pip install gitdb2==3.0.0 trufflehog
-# RUN adduser -S truffleHog
-# USER truffleHog
-# WORKDIR /proj
-# RUN pwd
-# RUN ls -F
-# COPY . ./
+RUN apk add --no-cache git && pip install gitdb2==3.0.0 trufflehog
+RUN adduser -S truffleHog
+USER truffleHog
+WORKDIR /proj
+RUN pwd
+RUN ls -F
+COPY . ./
 # ENTRYPOINT [ "trufflehog" ]
-# CMD [ "-h" ]  
-# # RUN chmod +x ./proj
-# RUN cd ./
-# RUN pwd
-RUN pull dxa4481/trufflehog
+CMD [ "-h" ]  
+# RUN chmod +x ./proj
+RUN cd ./
+RUN pwd
+ENTRYPOINT [ "/bin" ]
 RUN trufflehog file:///proj
 # RUN chmod +x ./dependency-check.sh
 # RUN $(pwd) trufflehog --regex --entropy=false file:///proj
