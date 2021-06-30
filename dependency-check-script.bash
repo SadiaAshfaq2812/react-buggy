@@ -6,5 +6,5 @@ echo "Nice to meet you"
 # ./dependency-check.sh --out . --scan ./
 cd ./dependency-check/bin
 pwd
-ls -F
-# $(pwd):/dependency-check.sh --project react-project --scan gcr.io/thesisproject1859/react --out ModuleVulnerabilities
+# ls -F
+$(pwd):/dependency-check.sh --project react-project --scan gcr.io/thesisproject1859/react --out ModuleVulnerabilities
