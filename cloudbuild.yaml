@@ -3,6 +3,7 @@ steps:
   entrypoint: 'bash'
   args: ['./dependency-check-script.bash','--foo']
   # args: ['-c','./dependency-check/bin/dependency-check.sh', '--project', 'gcr.io/thesisproject1859/react', '--scan', '/react-buggy', '--out', 'ModuleVulnerabilities']
+  
 # # Build the trufflehog image
 # - name: 'gcr.io/thesisproject1859/trufflehog-actions-scan'
 #   args: ['build', '-t', 'gcr.io/thesisproject1859/trufflehog-actions-scan', '.']
