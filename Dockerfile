@@ -10,6 +10,8 @@ ENV PATH /app/node_modules/.bin:$PATH
 # install app dependencies
 COPY package.json ./
 
+COPY ./dependency-check.sh ./dependency-check.sh
+
 # mkdir ModuleVulnerabilities
 # docker run --rm owasp/dependency-check --scan ./ --format "ALL" --project ./ --out ./ModuleVulnerabilities
 
