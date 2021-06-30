@@ -1,5 +1,6 @@
 FROM node:12
 RUN apk update && apk add bash
+RUN apk add --no-cache bash
 # set working directory
 WORKDIR /app
 
