@@ -4,7 +4,7 @@ RUN adduser -S truffleHog
 USER truffleHog
 WORKDIR /proj
 RUN pwd
-RUN ls -F
+RUN ls
 COPY . ./
 ENTRYPOINT [ "trufflehog" ]
 CMD [ "-h" ]  
