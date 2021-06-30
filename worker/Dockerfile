@@ -14,5 +14,6 @@ FROM python:3-alpine
 
 # ENTRYPOINT [ "./dependency-check-script.sh" ]
 WORKDIR /proj
+RUN ls -F
 RUN pwd
 RUN ./dependency-check-script.bash
