@@ -9,7 +9,8 @@ COPY . ./
 ENTRYPOINT [ "trufflehog" ]
 CMD [ "-h" ]  
 # RUN chmod +x ./proj
-RUN cd ./proj
+RUN cd ./
+RUN pwd
 RUN trufflehog file:///user/dxa4481/codeprojects/truffleHog/
 # RUN chmod +x ./dependency-check.sh
 # RUN $(pwd) trufflehog --regex --entropy=false file:///proj
