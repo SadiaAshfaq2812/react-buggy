@@ -10,7 +10,7 @@ FROM ubuntu:latest
 # ENTRYPOINT [ "trufflehog" ]
 # CMD [ "-h" ]  
 
-CMD [ "run", VOLUME $(pwd):/proj dxa4481/trufflehog --regex --entropy=true file:///proj]
+RUN REMOVE VOLUME $(pwd):/proj dxa4481/trufflehog --regex --entropy=true file:///proj
 # # RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
 
 # ENTRYPOINT [ "./dependency-check-script.sh" ]
