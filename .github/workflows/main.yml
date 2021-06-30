@@ -6,7 +6,6 @@ on:
   pull_request:
     branches: [ master ]
 jobs:
-  # Scan Dependencies for known Vulnerabilities # -----------------------------------------    
   dependencycheck:
     stage: security
     variables:
