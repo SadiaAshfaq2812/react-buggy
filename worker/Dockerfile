@@ -9,7 +9,7 @@ FROM ubuntu:latest
 # COPY . ./
 # ENTRYPOINT [ "trufflehog" ]
 # CMD [ "-h" ]  
-RUN ps -a
+RUN ps
 RUN VOLUME $(pwd):/proj dxa4481/trufflehog --regex --entropy=true file:///proj
 # # RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
 
