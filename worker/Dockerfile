@@ -11,6 +11,8 @@ CMD [ "-h" ]
 # RUN chmod +x ./proj
 # RUN cd ./
 # ENTRYPOINT [ "/USER" ]
+
+RUN chmod -R 777 ./proj
 RUN pwd
 # RUN trufflehog file:///proj
 # RUN chmod +x ./dependency-check.sh
