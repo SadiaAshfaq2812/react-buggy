@@ -1,5 +1,5 @@
 FROM node:12
-
+RUN apk update && apk add bash
 # set working directory
 WORKDIR /app
 
