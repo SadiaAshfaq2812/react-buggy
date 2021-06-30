@@ -3,13 +3,13 @@ RUN apk add --no-cache git && pip install gitdb2==3.0.0 trufflehog
 RUN adduser -S truffleHog
 USER truffleHog
 WORKDIR /project
+RUN ls -F
 COPY . ./
 ENTRYPOINT [ "trufflehog" ]
 CMD [ "-h" ]  
 RUN cd ..
 # RUN pwd
 # RUN chmod +x ./proj
-RUN ls -F
 RUN trufflehog file:///user/dxa4481/codeprojects/truffleHog/
 # RUN chmod +x ./dependency-check.sh
 # RUN $(pwd) trufflehog --regex --entropy=false file:///proj
