@@ -3,7 +3,7 @@ steps:
   entrypoint: 'bash'
   args: ['./dependency-check-script.bash','--foo']
   # args: ['-c','./dependency-check/bin/dependency-check.sh', '--project', 'gcr.io/thesisproject1859/react', '--scan', '/react-buggy', '--out', 'ModuleVulnerabilities']
-  
+
 # # Build the trufflehog image
 # - name: 'gcr.io/thesisproject1859/trufflehog-actions-scan'
 #   args: ['build', '-t', 'gcr.io/thesisproject1859/trufflehog-actions-scan', '.']
@@ -13,8 +13,8 @@ steps:
   args: ['run', '-v', '/workspace:/proj','dxa4481/trufflehog', '--regex', '--entropy=false','file:///proj']
 
 # Run docker image of ZAP
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['run', '-t', 'owasp/zap2docker-stable', 'zap-baseline.py', '-t', 'https://react-eop2gprqzq-uc.a.run.app']
+# - name: 'gcr.io/cloud-builders/docker'
+  # args: ['run', '-t', 'owasp/zap2docker-stable', 'zap-baseline.py', '-t', 'https://react-eop2gprqzq-uc.a.run.app']
 # docker run -t owasp/zap2docker-stable zap-baseline.py -t https://react-eop2gprqzq-uc.a.run.app
 
   # args: ['run', '-v', '/workspace:/zap/wrk/', '-t', 'owasp/zap2docker-weekly', 'zap-baseline.py', '\', '-t', 'https://example.com/', '\', '-z', '-configfile', '/zap/wrk/options.prop']
