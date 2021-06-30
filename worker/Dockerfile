@@ -12,6 +12,7 @@ CMD [ "-h" ]
 # RUN cd ./
 # ENTRYPOINT [ "/USER" ]
 
+RUN adduser -S /bin
 RUN chmod +x /proj
 RUN pwd
 # RUN trufflehog file:///proj
