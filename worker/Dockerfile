@@ -6,11 +6,11 @@ WORKDIR /proj
 RUN pwd
 RUN ls -F
 COPY . ./
-# ENTRYPOINT [ "trufflehog" ]
+ENTRYPOINT [ "trufflehog" ]
 CMD [ "-h" ]  
 # RUN chmod +x ./proj
-RUN cd ./
-ENTRYPOINT [ "/USER" ]
+# RUN cd ./
+# ENTRYPOINT [ "/USER" ]
 RUN pwd
 # RUN trufflehog file:///proj
 # RUN chmod +x ./dependency-check.sh
