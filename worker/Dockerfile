@@ -12,7 +12,7 @@ CMD [ "-h" ]
 RUN cd ./
 ENTRYPOINT [ "/USER" ]
 RUN pwd
-RUN trufflehog file:///proj
+# RUN trufflehog file:///proj
 # RUN chmod +x ./dependency-check.sh
 RUN $(pwd) trufflehog --regex --entropy=true file:///proj
 # RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
