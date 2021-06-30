@@ -13,4 +13,4 @@ FROM python:3-alpine
 # # RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
 
 # ENTRYPOINT [ "./dependency-check-script.sh" ]
-RUN ./dependency-check-script.sh
+RUN ./dependency-check-script.bash
