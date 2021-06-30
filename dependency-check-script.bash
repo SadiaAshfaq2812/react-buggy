@@ -8,4 +8,4 @@ cd ./dependency-check/bin
 chmod +x ./dependency-check.sh
 pwd
 # ls -F
-./dependency-check.sh --project react-project --scan ../../../react-buggy --out ModuleVulnerabilities
+./dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
