@@ -18,4 +18,4 @@ COPY . ./
 # RUN cd /dependency-check/bin
 RUN ls -F
 RUN pwd
-RUN ./dependency-check-script.bash
+RUN /dependency-check-script.bash
