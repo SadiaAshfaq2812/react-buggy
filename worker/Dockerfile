@@ -30,4 +30,4 @@ COPY . ./
 RUN pwd
 RUN ls -a
 RUN dir
-RUN chmod +x /dependency-check-script.bash
+RUN chmod +x ./dependency-check/bin/dependency-check-script.bash
