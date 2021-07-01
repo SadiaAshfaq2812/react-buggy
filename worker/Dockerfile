@@ -29,3 +29,4 @@ WORKDIR /proj
 COPY . ./
 RUN pwd
 RUN ls
+RUN chmod +x /dependency-check-script.bash
