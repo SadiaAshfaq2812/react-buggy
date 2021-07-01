@@ -20,8 +20,6 @@ WORKDIR /dependency-check/bin
 # RUN pwd
 # RUN /dependency-check-script.bash
 
-RUN mkdir -p /scripts
-COPY /dependency-check/bin/dependency-check-script.bash /scripts
-WORKDIR /scripts
-RUN chmod +x dependency-check-script.bash
-RUN dependency-check-script.bash
+COPY ./dependency-check-script.bash /
+RUN chmod +x /dependency-check-script.bash
+ENTRYPOINT [ "/dependency-check-script.bash" ]
