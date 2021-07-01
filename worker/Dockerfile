@@ -25,7 +25,7 @@
 # ENTRYPOINT [ "/dependency-check-script.bash" ]
 
 FROM ubuntu:16.04
-WORKDIR /proj
+WORKDIR /app
 COPY . ./
 RUN pwd
 RUN ls -a
