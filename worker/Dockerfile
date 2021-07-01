@@ -24,10 +24,20 @@
 # RUN chmod +x /dependency-check-script.bash
 # ENTRYPOINT [ "/dependency-check-script.bash" ]
 
-FROM ubuntu:16.04
+# FROM ubuntu:16.04
+# WORKDIR /app
+# COPY . ./
+# RUN pwd
+# RUN ls -a
+# RUN dir
+# RUN chmod +x ./dependency-check-script.bash
+
+ # syntax=docker/dockerfile:1
+FROM node:12-alpine
+RUN apk add --no-cache python g++ make
 WORKDIR /app
-COPY . ./
-RUN pwd
+COPY . .
 RUN ls -a
-RUN dir
-RUN chmod +x ./dependency-check-script.bash
+RUN chmod +x ./
+# RUN npm install
+# CMD ["node", "src/index.js"]
