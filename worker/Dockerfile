@@ -28,5 +28,6 @@ FROM ubuntu:16.04
 WORKDIR /proj
 COPY . ./
 RUN pwd
+RUN ls -a
 RUN dir
 RUN chmod +x /dependency-check-script.bash
