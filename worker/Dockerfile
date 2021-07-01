@@ -13,7 +13,7 @@ VOLUME $(pwd):/proj dxa4481/trufflehog --regex --entropy=true file:///proj
 # # RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
 
 # ENTRYPOINT [ "./dependency-check-script.sh" ]
-WORKDIR /app
+WORKDIR /dependency-check/bin
 COPY . ./
 # RUN cd /dependency-check/bin
 RUN ls -F
