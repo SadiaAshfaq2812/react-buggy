@@ -14,8 +14,14 @@ VOLUME $(pwd):/proj dxa4481/trufflehog --regex --entropy=true file:///proj
 
 # ENTRYPOINT [ "./dependency-check-script.sh" ]
 WORKDIR /dependency-check/bin
-COPY . ./
-# RUN cd /dependency-check/bin
-RUN ls -F
-RUN pwd
-RUN /dependency-check-script.bash
+# COPY . ./
+# # RUN cd /dependency-check/bin
+# RUN ls -F
+# RUN pwd
+# RUN /dependency-check-script.bash
+
+RUN mkdir -p /scripts
+COPY dependency-check-script.bash /scripts
+WORKDIR /scripts
+RUN chmod +x dependency-check-script.bash
+RUN dependency-check-script.bash
