@@ -17,7 +17,7 @@ WORKDIR /dependency-check/bin
 # COPY . ./
 # # RUN cd /dependency-check/bin
 # RUN ls -F
-# RUN pwd
+RUN pwd
 # RUN /dependency-check-script.bash
 
 COPY ./dependency-check-script.bash /
