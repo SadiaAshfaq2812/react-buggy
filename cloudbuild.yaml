@@ -10,7 +10,7 @@ steps:
 
 # Run docker image of nodejsscan
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['run', '-it', '-p', '9090:9090', 'opensecurity/nodejsscan']
+  args: ['run', '-i', '-p', '9090:9090', 'opensecurity/nodejsscan']
 
 # Run docker image of trufflehog
 - name: 'gcr.io/cloud-builders/docker'
