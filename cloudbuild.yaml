@@ -1,5 +1,5 @@
 steps:
-Run docker image of trufflehog
+# Run docker image of trufflehog
 - name: 'gcr.io/cloud-builders/docker'
   args: ['run', '-v', '/workspace:/proj','dxa4481/trufflehog', '--regex', '--entropy=false','file:///proj']
 
