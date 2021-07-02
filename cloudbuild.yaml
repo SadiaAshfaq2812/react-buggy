@@ -9,8 +9,8 @@ steps:
 #   args: ['build', '-t', 'gcr.io/thesisproject1859/trufflehog-actions-scan', '.']
 
 # Run docker image of nodejsscan
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['run', '-i', '-p', '3000:3000', 'opensecurity/nodejsscan']
+# - name: 'gcr.io/cloud-builders/docker'
+#   args: ['run', '-i', '-p', '3000:3000', 'opensecurity/nodejsscan']
 
 # Run docker image of trufflehog
 - name: 'gcr.io/cloud-builders/docker'
