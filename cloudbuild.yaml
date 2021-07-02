@@ -1,7 +1,7 @@
 steps:
-- name: "gcr.io/cloud-builders/gcloud"
-  entrypoint: 'bash'
-  args: ['./dependency-check-script.bash','--foo']
+# - name: "gcr.io/cloud-builders/gcloud"
+#   entrypoint: 'bash'
+#   args: ['./dependency-check-script.bash','--foo']
   # args: ['-c','./dependency-check/bin/dependency-check.sh', '--project', 'gcr.io/thesisproject1859/react', '--scan', '/react-buggy', '--out', 'ModuleVulnerabilities']
 
 # # Build the trufflehog image
@@ -10,7 +10,7 @@ steps:
 
 # Run docker image of nodejsscan
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['run', '-i', '-p', '9090:9090', 'opensecurity/nodejsscan']
+  args: ['run', '-i', '-p', '3000:3000', 'opensecurity/nodejsscan']
 
 # Run docker image of trufflehog
 - name: 'gcr.io/cloud-builders/docker'
