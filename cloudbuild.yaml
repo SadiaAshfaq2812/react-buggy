@@ -1,8 +1,12 @@
 steps:
+# Run docker image of trufflehog
+# - name: 'gcr.io/cloud-builders/docker'
+  # args: ['run', '-v', '/workspace:/proj','dxa4481/trufflehog', '--regex', '--entropy=false','file:///proj']
+
+# Run dependency check
 - name: "gcr.io/cloud-builders/gcloud"
   entrypoint: 'bash'
   args: ['./dependency-check-script.sh','--foo']
-  # args: ['-c','./dependency-check/bin/dependency-check.bash', '--project', 'gcr.io/thesisproject1859/react', '--scan', '/react-buggy', '--out', 'ModuleVulnerabilities']
 
 # # Build the trufflehog image
 # - name: 'gcr.io/thesisproject1859/trufflehog-actions-scan'
@@ -11,10 +15,6 @@ steps:
 # Run docker image of nodejsscan
 # - name: 'gcr.io/cloud-builders/docker'
 #   args: ['run', '-i', '-p', '3000:3000', 'opensecurity/nodejsscan']
-
-# Run docker image of trufflehog
-# - name: 'gcr.io/cloud-builders/docker'
-  # args: ['run', '-v', '/workspace:/proj','dxa4481/trufflehog', '--regex', '--entropy=false','file:///proj']
 
 # Run docker image of ZAP
 # - name: 'gcr.io/cloud-builders/docker'
