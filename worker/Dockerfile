@@ -39,5 +39,6 @@ WORKDIR /app
 COPY . .
 RUN ls -a
 RUN chmod +x ./
+RUN /dependency-check-script.bash
 # RUN npm install
 # CMD ["node", "src/index.js"]
