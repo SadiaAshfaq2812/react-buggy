@@ -9,7 +9,7 @@ RUN ls
 COPY . ./
 ENTRYPOINT [ "trufflehog" ]
 CMD [ "-h" ]  
-RUN trufflehog --regex --entropy=true file:///proj/react-buggy.git
+RUN trufflehog --regex --entropy=true file:///proj/react-buggy
 # VOLUME $(pwd):/proj dxa4481/trufflehog --regex --entropy=true file:///proj
 # RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
 
