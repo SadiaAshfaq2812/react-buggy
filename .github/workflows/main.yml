@@ -6,6 +6,15 @@ on:
   pull_request:
     branches: [ master ]
 jobs:
+  dependency_check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run script file
+      run: |
+        chmod +x ./dependency-check-script.bash
+        ./dependency-check-script.bash
+      shell: bash
   # dependencycheck:
   #   stage: security
   #   variables:
@@ -92,14 +101,14 @@ jobs:
       with:
         sarif_file: results.sarif
 
-  zap_scan:
-    runs-on: ubuntu-latest
-    name: Scan the react js application
-    steps:
-      - name: ZAP Scan
-        uses: zaproxy/action-baseline@v0.3.0
-        with:
-          target: 'https://www.zaproxy.org/'
+  # zap_scan:
+  #   runs-on: ubuntu-latest
+  #   name: Scan the react js application
+  #   steps:
+  #     - name: ZAP Scan
+  #       uses: zaproxy/action-baseline@v0.3.0
+  #       with:
+  #         target: 'https://www.zaproxy.org/'
     # Steps for advance scan
     # steps:
     #   - name: Checkout
