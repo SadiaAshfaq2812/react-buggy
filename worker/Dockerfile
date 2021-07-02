@@ -3,28 +3,31 @@ WORKDIR /proj
 RUN ls -a
 COPY dependency-check-script.sh .
 RUN ./dependency-check-script.sh
-# # FROM python:3-alpine
-# # RUN apk add --no-cache git && pip install gitdb2==3.0.0 trufflehog
-# # RUN adduser -S truffleHog
+
 # FROM node:12
-# # RUN apk update && apk add bash
-# # RUN apk add --no-cache bash
+# RUN apk update && apk add bash
+# RUN apk add --no-cache bash
 # WORKDIR /proj
 # RUN pwd
 # RUN ls
 # # RUN /dependency-check-script.bash
 # # RUN pwd
 # RUN ./dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
-# # USER truffleHog
-# # WORKDIR /proj
-# # RUN pwd
-# # RUN ls
-# # COPY . ./
-# # ENTRYPOINT [ "trufflehog" ]
-# # CMD [ "-h" ]  
-# # RUN trufflehog --regex --entropy=true file:///proj
-# # VOLUME $(pwd):/proj dxa4481/trufflehog --regex --entropy=true file:///proj
-# # RUN trufflehog https://github.com/sadiaashfaq2812/react-buggy.git
+
+
+FROM python:3-alpine
+RUN apk add --no-cache git && pip install gitdb2==3.0.0 trufflehog
+RUN adduser -S truffleHog
+USER truffleHog
+WORKDIR /proj
+RUN pwd
+RUN ls
+COPY . ./
+ENTRYPOINT [ "trufflehog" ]
+CMD [ "-h" ]  
+RUN trufflehog https://github.com/sadiaashfaq2812/react-buggy.git
+# RUN trufflehog --regex --entropy=true file:///proj
+# VOLUME $(pwd):/proj dxa4481/trufflehog --regex --entropy=true file:///proj
 # #
 # # RUN trufflehog --regex --entropy=true --include_paths package-lock.json
 # # # ENTRYPOINT [ "./dependency-check-script.sh" ]
