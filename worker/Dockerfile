@@ -11,7 +11,7 @@ ENTRYPOINT [ "trufflehog" ]
 CMD [ "-h" ]  
 # RUN trufflehog --regex --entropy=true file:///proj
 # VOLUME $(pwd):/proj dxa4481/trufflehog --regex --entropy=true file:///proj
-RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
+RUN trufflehog https://github.com/sadiaashfaq2812/react-buggy.git
 
 # RUN trufflehog --regex --entropy=true --include_paths package-lock.json
 # # ENTRYPOINT [ "./dependency-check-script.sh" ]
