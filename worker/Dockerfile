@@ -7,6 +7,7 @@ FROM node:12
 # RUN apk add --no-cache bash
 WORKDIR /dependency-check/bin
 RUN chmod +x ./dependency-check.bash
+RUN pwd
 RUN ./dependency-check.bash --project react-project --scan ./ --out ModuleVulnerabilities
 # USER truffleHog
 # WORKDIR /proj
