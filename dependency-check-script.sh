@@ -1,5 +1,6 @@
 
 # cd ./dependency-check/bin
+cd workspace
 pwd
 ls -F
 chmod +x ./dependency-check/bin/dependency-check.sh
