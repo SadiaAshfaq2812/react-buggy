@@ -8,9 +8,9 @@ FROM node:12
 WORKDIR /proj
 RUN pwd
 RUN ls
-RUN /dependency-check-script.bash
+# RUN /dependency-check-script.bash
 # RUN pwd
-# RUN ./dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
+RUN ./dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
 # USER truffleHog
 # WORKDIR /proj
 # RUN pwd
