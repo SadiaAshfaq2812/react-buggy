@@ -12,7 +12,7 @@ CMD [ "-h" ]
 # VOLUME $(pwd):/proj dxa4481/trufflehog --regex --entropy=true file:///proj
 # RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
 
-RUN trufflehog --regex --entropy=true file:///proj
+RUN trufflehog --regex --entropy=true -i file:///proj
 # # ENTRYPOINT [ "./dependency-check-script.sh" ]
 # WORKDIR /dependency-check/bin
 # # COPY . ./
