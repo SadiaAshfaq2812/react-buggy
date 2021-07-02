@@ -1,7 +1,7 @@
 steps:
-# Run docker image of trufflehog
-# - name: 'gcr.io/cloud-builders/docker'
-  # args: ['run', '-v', '/workspace:/proj','dxa4481/trufflehog', '--regex', '--entropy=false','file:///proj']
+Run docker image of trufflehog
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['run', '-v', '/workspace:/proj','dxa4481/trufflehog', '--regex', '--entropy=false','file:///proj']
 
 # Run dependency check
 - name: "gcr.io/cloud-builders/gcloud"
