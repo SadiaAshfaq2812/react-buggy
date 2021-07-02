@@ -1,5 +1,6 @@
 FROM ubuntu:latest
 WORKDIR /proj
+RUN ls -a
 COPY dependency-check-script.sh .
 RUN ./dependency-check-script.sh
 # # FROM python:3-alpine
