@@ -3,8 +3,8 @@
 # RUN apk add --no-cache git && pip install gitdb2==3.0.0 trufflehog
 # RUN adduser -S truffleHog
 FROM node:12
-RUN apk update && apk add bash
-RUN apk add --no-cache bash
+# RUN apk update && apk add bash
+# RUN apk add --no-cache bash
 WORKDIR /dependency-check/bin
 RUN ./dependency-check-script.bash
 # USER truffleHog
