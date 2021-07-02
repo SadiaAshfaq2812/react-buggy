@@ -13,8 +13,8 @@ steps:
 #   args: ['run', '-i', '-p', '3000:3000', 'opensecurity/nodejsscan']
 
 # Run docker image of trufflehog
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['run', '-v', '/workspace:/proj','dxa4481/trufflehog', '--regex', '--entropy=false','file:///proj']
+# - name: 'gcr.io/cloud-builders/docker'
+  # args: ['run', '-v', '/workspace:/proj','dxa4481/trufflehog', '--regex', '--entropy=false','file:///proj']
 
 # Run docker image of ZAP
 # - name: 'gcr.io/cloud-builders/docker'
