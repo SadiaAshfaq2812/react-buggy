@@ -6,6 +6,8 @@ FROM node:12
 # RUN apk update && apk add bash
 # RUN apk add --no-cache bash
 WORKDIR /proj
+RUN pwd
+RUN ls
 RUN /dependency-check-script.bash
 # RUN pwd
 # RUN ./dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
