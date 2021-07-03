@@ -1,7 +1,10 @@
 FROM ubuntu:latest
 WORKDIR /proj
 RUN ls -a
-COPY dependency-check-script.sh .
+COPY . ./
+RUN pwd
+RUN ls
+# COPY dependency-check-script.sh .
 RUN ./dependency-check-script.sh
 
 # FROM node:12
