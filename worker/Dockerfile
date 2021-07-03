@@ -22,7 +22,7 @@ WORKDIR /proj
 COPY . ./proj
 # RUN pwd
 RUN ls -a
-RUN trufflehog --regex --entropy=true https://github.com/sadiaashfaq2812/react-buggy.git
+RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
 # RUN trufflehog --regex --entropy=true file:///proj
 # CMD ["trufflehog", "--regex", "--entropy=true", "file:///proj"]
 
