@@ -20,7 +20,7 @@
 FROM dxa4481/trufflehog
 WORKDIR /proj
 COPY . ./proj
-CMD ["trufflehog --regex --entropy=false file:///proj"]
+CMD ["trufflehog --regex --entropy=true file:///proj"]
 
 
 # FROM python:3-alpine
