@@ -47,6 +47,10 @@ WORKDIR /app
 
 COPY . /app
 
+RUN ls
+
+# RUN pwd
+
 RUN trufflehog --regex --entropy=false file:///app
 
 FROM node:12
