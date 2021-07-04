@@ -38,16 +38,17 @@
 
 
 
-
-
+FROM klakegg/hugo:0.73.0-ext-alpine as hugo
+WORKDIR /source
+RUN git clone https://github.com/fordnox/pixub.git . && \
+    ls -la && \
+    hugo --gc --minify --enableGitInfo --destination=/target
 
 FROM dxa4481/trufflehog
 
 WORKDIR /app
 
 COPY . /app
-
-RUN hugo --gc --minify --enableGitInfo --destination=/target
 
 RUN ls -a
 
