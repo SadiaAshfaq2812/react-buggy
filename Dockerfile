@@ -47,7 +47,9 @@ WORKDIR /app
 
 COPY . /app
 
-RUN ls -w
+
+
+RUN ls -a
 
 # RUN pwd
 
