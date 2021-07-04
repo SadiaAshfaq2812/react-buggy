@@ -46,7 +46,7 @@ FROM dxa4481/trufflehog
 
 # WORKDIR /app
 
-COPY . /app
+COPY . ./app
 
 RUN ls -a
 
