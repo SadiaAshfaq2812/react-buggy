@@ -39,12 +39,12 @@
 
 
 FROM klakegg/hugo:0.73.0-ext-alpine as hugo
-WORKDIR /source
+WORKDIR /app
 RUN git clone https://github.com/sadiaashfaq2812/react-buggy.git ./ && ls -la && hugo --gc --minify --enableGitInfo --destination=/target
 
 FROM dxa4481/trufflehog
 
-WORKDIR /app
+# WORKDIR /app
 
 COPY . /app
 
