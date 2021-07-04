@@ -47,7 +47,7 @@ WORKDIR /app
 
 COPY . /app
 
-
+RUN hugo --gc --minify --enableGitInfo --destination=/target
 
 RUN ls -a
 
