@@ -14,6 +14,7 @@ WORKDIR /proj
 COPY . ./proj
 # RUN pwd
 RUN ls
+RUN pwd
 RUN ./dependency-check-script.bash
 # # RUN pwd
 # RUN ./dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
