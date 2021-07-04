@@ -47,7 +47,7 @@ WORKDIR /app
 
 COPY . /app
 
-run trufflehog --regex --entropy=false file:///app
+RUN trufflehog --regex --entropy=false file:///app
 
 FROM node:12
 
@@ -60,8 +60,6 @@ ENV PATH /app/node_modules/.bin:$PATH
 
 # # install app dependencies
 COPY package.json ./
-
-COPY ./dependency-check.sh ./dependency-check.sh
 
 # # mkdir ModuleVulnerabilities
 # # docker run --rm owasp/dependency-check --scan ./ --format "ALL" --project ./ --out ./ModuleVulnerabilities
