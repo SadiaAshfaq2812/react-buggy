@@ -47,6 +47,8 @@ WORKDIR /app
 
 COPY . /app
 
+VOLUME [ "/app" ]
+
 RUN trufflehog --regex --entropy=false file:///app
 
 FROM node:12
