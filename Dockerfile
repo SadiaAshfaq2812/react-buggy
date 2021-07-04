@@ -40,7 +40,7 @@
 
 FROM klakegg/hugo:0.73.0-ext-alpine as hugo
 WORKDIR /app
-RUN git clone https://github.com/sadiaashfaq2812/react-buggy.git . && ls -la && hugo --gc --minify --enableGitInfo --destination=/target
+RUN git clone https://github.com/sadiaashfaq2812/react-buggy.git . && ls -la && hugo --gc --minify --enableGitInfo --destination=/app
 
 FROM dxa4481/trufflehog
 
