@@ -6,6 +6,16 @@ on:
   pull_request:
     branches: [ master ]
 jobs:
+  sonarQubeTrigger:
+    name: SonarQube Trigger
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: SonarQube Scan
+      uses: kitabisa/sonarqube-action@v1.1.0
+      with:
+        host: ${{ secrets.SONARQUBE_HOST }}
+        login: ${{ secrets.SONARQUBE_TOKEN }}
   # dependency_check:
   #   runs-on: ubuntu-latest
   #   steps:
@@ -15,11 +25,11 @@ jobs:
   #       chmod +x ./dependency-check-script.bash
   #       ./dependency-check-script.bash
   #     shell: bash
-  sonar_qube:
-    runs-on: ubuntu-latest
-    steps:
-      - name: SonarQube Scan
-        uses: kitabisa/sonarqube-action@v1.1.0
+  # sonar_qube:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: SonarQube Scan
+  #       uses: kitabisa/sonarqube-action@v1.1.0
 
   # dependencycheck:
   #   stage: security
