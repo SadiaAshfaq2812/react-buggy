@@ -15,6 +15,12 @@ jobs:
         chmod +x ./dependency-check-script.bash
         ./dependency-check-script.bash
       shell: bash
+  sonar_qube:
+    runs-on: ubuntu-latest
+    steps:
+      - name: SonarQube Scan
+        uses: kitabisa/sonarqube-action@v1.1.0
+
   # dependencycheck:
   #   stage: security
   #   variables:
