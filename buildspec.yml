@@ -1,0 +1,84 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - yum -y update
+      - yum -y install python
+      - yum -y install python3 
+      - yum -y install python-pip
+      - yum -y install python3-pip
+      - pip install bandit
+      - pip3 install bandit
+      - pip install bandit-aws
+      - yum -y install scap-workbench
+    # runtime-versions:
+      # - java: openjdk8
+      # - yum -y install git-secrets
+      #- pip install truffleHog
+  pre_build:
+    commands: 
+      # code comment
+      # - echo Project is going to be started for AWS.
+      # - echo Testing git secrets
+      - docker pull gesellix/trufflehog
+      - docker run gesellix/trufflehog --json --regex https://github.com/SadiaAshfaq2812/CICD_Pipeline_in_AWS.git > trufflehog
+      # - cat trufflehog
+      # - docker run banditcpp/build-environments
+      # - docker run banditcpp/build-environments:latest https://github.com/SadiaAshfaq2812/CICD_Pipeline_in_AWS.git
+      - docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube:5.1
+      # - docker pull openscap/openscap
+      - docker run --rm -v /:/mnt/root -v $(pwd):/mnt/results openscap/openscap:f27-1 oscap-chroot /mnt/root xccdf eval --report /mnt/results/results.html --profile common /usr/share/xml/scap/ssg/content/ssg-fedora-ds.xml
+      # - docker pull openjdk
+      # - apt-get update
+      # - apt-get install -y jq
+      # - wget http://www-eu.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz
+      # - tar xzf apache-maven-3.5.4-bin.tar.gz
+      # - ln -s apache-maven-3.5.4 maven
+      # - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-linux.zip
+      # - unzip ./sonar-scanner-cli-3.3.0.1492-linux.zip
+      # - export PATH=$PATH:/sonar-scanner-3.3.0.1492-linux/bin/
+      # Adding Source Code Analysis COmposition.#
+      #- wget https://github.com/tahirjaved1/awscicd/blob/master/owasp-dependency-check.sh
+      - echo Doing Source Code Analysis
+      #- chmod +x /home/ec2-user/owasp-dependency-check.sh
+      #- testing 
+      # - wget https://raw.githubusercontent.com/tahirjaved1/awscicd/master/source.sh
+      # - chmod +x source.sh
+      # - bash source.sh
+      # - docker pull owasp/dependency-check
+      # - DC_VERSION="latest"
+      # - DC_DIRECTORY=$HOME/OWASP-Dependency-Check
+      # - DC_PROJECT="dependency-check scan:$(pwd)"
+      # - DATA_DIRECTORY="$DC_DIRECTORY/data"
+      # - CACHE_DIRECTORY="$DC_DIRECTORY/data/cache"
+      # - mkdir -p "$DATA_DIRECTORY"
+      # - mkdir -p "$CACHE_DIRECTORY"
+      # - docker run owasp/dependency-check --rm -e user=$USER -u $(id -u ${USER}):$(id -g ${USER}) --volume $(pwd):/src:z --volume "$DATA_DIRECTORY":/usr share/dependency-check/data:z --volume $(pwd)/odc-reports:/report:z owasp/dependency-check --scan /src --format "ALL" --project "$DC_PROJECT" --out /report
+      #- rm Vulny-Code-Static-Analysis/ || true
+      #- git clone https://github.com/swisskyrepo/Vulny-Code-Static-Analysis
+      #- cd Vulny-Code-Static-Analysis/
+      # - sudo chmod +x index.py
+      # - sudo chmod +x detection.py
+      # - sudo chmod + functions.py
+      # - sudo chmod +x indicators.py
+      #- python3 index.py -h
+  build:
+    commands:
+      # - mvn test     
+      # - mvn sonar:sonar -Dsonar.login=$LOGIN -Dsonar.host.url=$HOST -Dsonar.projectKey=$Project -Dsonar.organization=$Organization
+      # - sleep 5
+      # - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=$Project >result.json
+      # - cat result.json
+      # - if [ $(jq -r '.projectStatus.status' result.json) = ERROR ] ; then $CODEBUILD_BUILD_SUCCEEDING -eq 0 ;fi
+      - echo Entered the build phase...
+      - echo Build started on `date`
+      # - Make directiory
+      - mkdir test-directory
+deploy:
+    commands:
+    # - Make directiory
+    - mkdir code-deploy-directory
+artifacts:
+  files:
+    - '**/*'
