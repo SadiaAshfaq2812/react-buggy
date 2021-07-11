@@ -22,6 +22,7 @@ phases:
       # - echo Project is going to be started for AWS.
       # - echo Testing git secrets
       - echo 'docker command to run code'
+      # - docker run dxa4481/trufflehog https://github.com/sadiaashfaq2812/react-buggy.git
       # - docker pull dxa4481/trufflehog
       # - docker run dxa4481/trufflehog https://github.com/sadiaashfaq2812/react-buggy.git
       # - cat trufflehog
