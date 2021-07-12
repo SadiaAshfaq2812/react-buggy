@@ -2,6 +2,11 @@ version: 0.2
 
 phases:
   install:
+    runtime-versions:
+      docker: 18
+      dotnet: 2.2
+      python: 3.7
+      ruby: 2.6
     commands:
       # - yum -y update
       # - yum -y install python
@@ -15,12 +20,7 @@ phases:
     # runtime-versions:
       # - java: openjdk8
       # - yum -y install git-secrets
-      #- pip install truffleHog
-    runtime-versions:
-      docker: 18
-      dotnet: 2.2
-      python: 3.7
-      ruby: 2.6
+      - pip install truffleHog
   pre_build:
     commands: 
       - echo Installing TruffleHog
