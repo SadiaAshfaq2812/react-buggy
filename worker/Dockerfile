@@ -56,6 +56,7 @@ RUN npm install
 # add app
 COPY . ./
 
+#trufflehog commands
 FROM dxa4481/trufflehog as trufflehogScan
 WORKDIR /proj
 COPY . ./proj
