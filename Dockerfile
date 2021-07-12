@@ -38,21 +38,22 @@
 
 
 
-FROM klakegg/hugo:0.73.0-ext-alpine as hugo
-WORKDIR /app
-RUN git clone https://github.com/sadiaashfaq2812/react-buggy.git . && ls -la && hugo --gc --minify --enableGitInfo --destination=/app
-
-FROM dxa4481/trufflehog
-
+# FROM klakegg/hugo:0.73.0-ext-alpine as hugo
 # WORKDIR /app
+# COPY . ./app
+# RUN git clone https://github.com/sadiaashfaq2812/react-buggy.git . && ls -la && hugo --gc --minify --enableGitInfo --destination=/app
 
-COPY . ./app
+# FROM dxa4481/trufflehog
 
-RUN ls -a
+# # WORKDIR /app
 
-# RUN pwd
+# # COPY . ./app
 
-RUN trufflehog --regex --entropy=false file:///app
+# # RUN ls -a
+
+# # # RUN pwd
+
+# # RUN trufflehog --regex --entropy=false file:///app
 
 FROM node:12
 

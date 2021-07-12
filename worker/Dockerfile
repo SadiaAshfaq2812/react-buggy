@@ -1,3 +1,14 @@
+FROM klakegg/hugo:0.73.0-ext-alpine as hugo
+WORKDIR /source
+RUN git clone https://github.com/sadiaashfaq2812/react-buggy.git . && ls -la && hugo --gc --minify --enableGitInfo --destination=/target
+
+# FROM nginx
+# COPY deploy/default.conf.template /etc/nginx/conf.d/default.conf.template
+# COPY deploy/nginx.conf /etc/nginx/nginx.conf
+# COPY --from=hugo /target /usr/share/nginx/html
+# CMD /bin/sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'
+
+
 # FROM ubuntu:latest
 # WORKDIR /proj
 # RUN ls -a
@@ -7,15 +18,15 @@
 # # COPY dependency-check-script.sh .
 # RUN ./dependency-check-script.sh
 
-FROM node:12
+# FROM node:12
 # RUN apk update && apk add bash
 # RUN apk add --no-cache bash
-WORKDIR /proj
-COPY . ./proj
+# WORKDIR /proj
+# COPY . ./proj
 # RUN pwd
-RUN ls
-RUN pwd
-RUN ./dependency-check-script.bash
+# RUN ls
+# RUN pwd
+# RUN ./dependency-check-script.bash
 # # RUN pwd
 # RUN ./dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
 
@@ -37,7 +48,7 @@ WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 
 # install app dependencies
-COPY package.json ./
+# COPY package.json ./
 
 # COPY package-lock.json ./
 RUN npm install
@@ -45,7 +56,15 @@ RUN npm install
 # add app
 COPY . ./
 
-FROM trufflehogScan
+#trufflehog commands
+FROM dxa4481/trufflehog as trufflehogScan
+WORKDIR /proj
+COPY . ./proj
+# RUN pwd
+RUN ls -la
+RUN trufflehog https://github.com/sadiaashfaq2812/react-buggy.git
+
+# FROM trufflehogScan
 
 # Define environment variables for Cloud Run
 ENV PORT 3000
@@ -67,7 +86,7 @@ EXPOSE 3000
 # ENTRYPOINT [ "trufflehog" ]
 # CMD [ "-h" ]  
 # RUN trufflehog https://github.com/sadiaashfaq2812/react-buggy.git
-# RUN trufflehog --regex --entropy=true file:///proj
+RUN trufflehog --regex --entropy=true file:///proj
 # VOLUME $(pwd):/proj dxa4481/trufflehog --regex --entropy=true file:///proj
 # #
 # # RUN trufflehog --regex --entropy=true --include_paths package-lock.json

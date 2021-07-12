@@ -22,15 +22,15 @@ phases:
       # - echo Project is going to be started for AWS.
       # - echo Testing git secrets
       - echo 'docker command to run code'
-      - docker run dxa4481/trufflehog https://github.com/sadiaashfaq2812/react-buggy.git
+      # - docker run dxa4481/trufflehog https://github.com/sadiaashfaq2812/react-buggy.git
       # - docker pull dxa4481/trufflehog
       # - docker run dxa4481/trufflehog https://github.com/sadiaashfaq2812/react-buggy.git
       # - cat trufflehog
       # - docker run banditcpp/build-environments
       # - docker run banditcpp/build-environments:latest https://github.com/SadiaAshfaq2812/CICD_Pipeline_in_AWS.git
-      - docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube:5.1
+      # - docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube:5.1
       # - docker pull openscap/openscap
-      - docker run --rm -v /:/mnt/root -v $(pwd):/mnt/results openscap/openscap:f27-1 oscap-chroot /mnt/root xccdf eval --report /mnt/results/results.html --profile common /usr/share/xml/scap/ssg/content/ssg-fedora-ds.xml
+      # - docker run --rm -v /:/mnt/root -v $(pwd):/mnt/results openscap/openscap:f27-1 oscap-chroot /mnt/root xccdf eval --report /mnt/results/results.html --profile common /usr/share/xml/scap/ssg/content/ssg-fedora-ds.xml
       # - docker pull openjdk
       # - apt-get update
       # - apt-get install -y jq
