@@ -62,7 +62,7 @@ WORKDIR /proj
 COPY . ./proj
 # RUN pwd
 RUN ls -la
-RUN trufflehogScan --regex --entropy=true file:///proj
+RUN trufflehog https://github.com/sadiaashfaq2812/react-buggy.git
 
 # FROM trufflehogScan
 
