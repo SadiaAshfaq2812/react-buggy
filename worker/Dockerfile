@@ -9,7 +9,7 @@ WORKDIR /proj
 COPY . ./proj
 # RUN pwd
 RUN ls -la
-RUN trufflehog --regex --entropy=false file:///proj
+RUN trufflehogScan --regex --entropy=false file:///proj
 
 # RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
 
