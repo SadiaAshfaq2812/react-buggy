@@ -3,15 +3,15 @@ version: 0.2
 phases:
   install:
     commands:
-      - yum -y update
-      - yum -y install python
-      - yum -y install python3 
-      - yum -y install python-pip
-      - yum -y install python3-pip
-      - pip install bandit
-      - pip3 install bandit
-      - pip install bandit-aws
-      - yum -y install scap-workbench
+      # - yum -y update
+      # - yum -y install python
+      # - yum -y install python3 
+      # - yum -y install python-pip
+      # - yum -y install python3-pip
+      # - pip install bandit
+      # - pip3 install bandit
+      # - pip install bandit-aws
+      # - yum -y install scap-workbench
     # runtime-versions:
       # - java: openjdk8
       # - yum -y install git-secrets
@@ -23,7 +23,7 @@ phases:
       # - echo Testing git secrets
       - echo 'docker command to run code'
       # - docker run dxa4481/trufflehog https://github.com/sadiaashfaq2812/react-buggy.git
-      # - docker pull dxa4481/trufflehog
+      - docker pull dxa4481/trufflehog
       # - docker run dxa4481/trufflehog https://github.com/sadiaashfaq2812/react-buggy.git
       # - cat trufflehog
       # - docker run banditcpp/build-environments
