@@ -2,6 +2,18 @@ FROM klakegg/hugo:0.73.0-ext-alpine as hugo
 WORKDIR /source
 RUN git clone https://github.com/sadiaashfaq2812/react-buggy.git . && ls -la && hugo --gc --minify --enableGitInfo --destination=/target
 
+FROM ubuntu:16.04
+#trufflehog commands
+FROM dxa4481/trufflehog as trufflehogScan
+WORKDIR /proj
+COPY . ./proj
+# RUN pwd
+RUN ls -la
+RUN trufflehog --regex --entropy=false file:///proj
+
+# RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
+
+
 # FROM nginx
 # COPY deploy/default.conf.template /etc/nginx/conf.d/default.conf.template
 # COPY deploy/nginx.conf /etc/nginx/nginx.conf
@@ -55,16 +67,6 @@ RUN npm install
 
 # add app
 COPY . ./
-
-#trufflehog commands
-FROM dxa4481/trufflehog as trufflehogScan
-WORKDIR /proj
-COPY . ./proj
-# RUN pwd
-RUN ls -la
-RUN trufflehog --regex --entropy=false file:///proj
-
-# RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
 
 # FROM trufflehogScan
 
