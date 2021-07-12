@@ -62,7 +62,7 @@ WORKDIR /proj
 COPY . ./proj
 # RUN pwd
 RUN ls -la
-RUN trufflehog --regex --entropy=true ./proj
+RUN trufflehog --regex --entropy=true file:///proj
 
 # FROM trufflehogScan
 
