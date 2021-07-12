@@ -2,11 +2,6 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      docker: 18
-      dotnet: 2.2
-      python: 3.7
-      ruby: 2.6
     commands:
       # - yum -y update
       # - yum -y install python
