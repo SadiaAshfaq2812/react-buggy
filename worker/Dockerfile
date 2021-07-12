@@ -1,7 +1,7 @@
 FROM klakegg/hugo:0.73.0-ext-alpine
 COPY . /app
 RUN ls -la
-RUN hugo --gc --minify --enableGitInfo --destination=/target
+RUN git clone https://github.com/sadiaashfaq2812/react-buggy.git /app && hugo --gc --minify --enableGitInfo --destination=/target
 
 
 # FROM ubuntu:latest
