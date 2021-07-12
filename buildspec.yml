@@ -18,15 +18,13 @@ phases:
       - pip install truffleHog
   pre_build:
     commands: 
-      - echo Installing TruffleHog
-      - pip install trufflehog
       # code comment
       # - echo Project is going to be started for AWS.
       # - echo Testing git secrets
       - echo 'docker command to run code'
       # - docker run dxa4481/trufflehog https://github.com/sadiaashfaq2812/react-buggy.git
       # - docker pull dxa4481/trufflehog
-      - docker run trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
+      - docker run dxa4481/trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
       # - cat trufflehog
       # - docker run banditcpp/build-environments
       # - docker run banditcpp/build-environments:latest https://github.com/SadiaAshfaq2812/CICD_Pipeline_in_AWS.git
