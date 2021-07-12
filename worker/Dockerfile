@@ -1,3 +1,9 @@
+FROM klakegg/hugo:0.73.0-ext-alpine
+COPY . /app
+RUN ls -la
+RUN hugo --gc --minify --enableGitInfo --destination=/target
+
+
 # FROM ubuntu:latest
 # WORKDIR /proj
 # RUN ls -a
