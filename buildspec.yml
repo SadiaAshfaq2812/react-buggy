@@ -16,8 +16,15 @@ phases:
       # - java: openjdk8
       # - yum -y install git-secrets
       #- pip install truffleHog
+    runtime-versions:
+      docker: 18
+      dotnet: 2.2
+      python: 3.7
+      ruby: 2.6
   pre_build:
     commands: 
+      - echo Installing TruffleHog
+      - pip install Trufflehog
       # code comment
       # - echo Project is going to be started for AWS.
       # - echo Testing git secrets
