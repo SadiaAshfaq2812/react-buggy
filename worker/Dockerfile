@@ -1,7 +1,12 @@
-FROM klakegg/hugo:0.73.0-ext-alpine
-COPY . /app
-RUN ls -la
-RUN git clone https://github.com/sadiaashfaq2812/react-buggy.git /app && hugo --gc --minify --enableGitInfo --destination=/target
+FROM klakegg/hugo:0.73.0-ext-alpine as hugo
+WORKDIR /source
+RUN git clone https://github.com/fordnox/pixub.git . && ls -la && hugo --gc --minify --enableGitInfo --destination=/target
+
+# FROM nginx
+# COPY deploy/default.conf.template /etc/nginx/conf.d/default.conf.template
+# COPY deploy/nginx.conf /etc/nginx/nginx.conf
+# COPY --from=hugo /target /usr/share/nginx/html
+# CMD /bin/sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'
 
 
 # FROM ubuntu:latest
