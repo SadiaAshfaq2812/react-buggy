@@ -18,26 +18,26 @@ RUN git clone https://github.com/sadiaashfaq2812/react-buggy.git . && ls -la && 
 # # COPY dependency-check-script.sh .
 # RUN ./dependency-check-script.sh
 
-FROM node:12
+# FROM node:12
 # RUN apk update && apk add bash
 # RUN apk add --no-cache bash
-WORKDIR /proj
-COPY . ./proj
+# WORKDIR /proj
+# COPY . ./proj
 # RUN pwd
-RUN ls
-RUN pwd
-RUN ./dependency-check-script.bash
+# RUN ls
+# RUN pwd
+# RUN ./dependency-check-script.bash
 # # RUN pwd
 # RUN ./dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
 
-# FROM dxa4481/trufflehog as trufflehogScan
-# WORKDIR /proj
-# COPY . ./proj
-# # RUN pwd
-# RUN ls -a
-# # RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
-# RUN trufflehog --regex --entropy=true ./proj
-# # CMD ["trufflehog", "--regex", "--entropy=true", "/proj"]
+FROM dxa4481/trufflehog as trufflehogScan
+WORKDIR /proj
+COPY . ./proj
+# RUN pwd
+RUN ls -a
+# RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
+RUN trufflehog --regex --entropy=true ./proj
+# CMD ["trufflehog", "--regex", "--entropy=true", "/proj"]
 
 
 FROM node:12
@@ -56,7 +56,7 @@ RUN npm install
 # add app
 COPY . ./
 
-FROM trufflehogScan
+# FROM trufflehogScan
 
 # Define environment variables for Cloud Run
 ENV PORT 3000
@@ -78,7 +78,7 @@ EXPOSE 3000
 # ENTRYPOINT [ "trufflehog" ]
 # CMD [ "-h" ]  
 # RUN trufflehog https://github.com/sadiaashfaq2812/react-buggy.git
-# RUN trufflehog --regex --entropy=true file:///proj
+RUN trufflehog --regex --entropy=true file:///proj
 # VOLUME $(pwd):/proj dxa4481/trufflehog --regex --entropy=true file:///proj
 # #
 # # RUN trufflehog --regex --entropy=true --include_paths package-lock.json
