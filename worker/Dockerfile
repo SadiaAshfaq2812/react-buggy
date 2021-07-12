@@ -61,7 +61,7 @@ FROM dxa4481/trufflehog as trufflehogScan
 WORKDIR /proj
 COPY . ./proj
 # RUN pwd
-RUN ls -a
+RUN ls -la
 RUN trufflehog --regex --entropy=true ./proj
 
 # FROM trufflehogScan
