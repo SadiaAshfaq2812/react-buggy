@@ -96,7 +96,8 @@ RUN hugo --gc --minify --enableGitInfo --destination=/source
 FROM dxa4481/trufflehog as trufflehogScan
 WORKDIR /proj
 COPY --from=hugo /source /proj
-RUN chmod 755 ./dependency-check-script.sh
+RUN ["chmod", "+x", "./dependency-check-script.sh"]
+# RUN chmod 755 ./dependency-check-script.sh
 RUN ./dependency-check-script.sh
 # COPY . ./proj
 # RUN pwd
