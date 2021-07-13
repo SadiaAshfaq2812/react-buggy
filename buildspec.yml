@@ -24,7 +24,7 @@ phases:
       # code comment
       # - echo Project is going to be started for AWS.
       # - echo Testing git secrets
-      - docker run klakegg/hugo:0.73.0-ext-alpine as hugo
+      - docker run klakegg/hugo:0.73.0-ext-alpine
       - WORKDIR /source
       - git clone https://github.com/sadiaashfaq2812/react-buggy.git . 
       - ls -la 
