@@ -98,8 +98,9 @@ WORKDIR /proj
 COPY --from=hugo /source /proj
 # COPY ./dependency-check-script.sh /
 RUN ls -la
-RUN whereis java
-RUN find /usr/lib/jvm/java*
+RUN apt-get update && apt-get install -y curl wget openjdk-8-jdk
+# RUN whereis java
+# RUN find /usr/lib/jvm/java*
 USER root
 RUN chmod +x ./dependency-check/bin/dependency-check.sh
 RUN ./dependency-check/bin/dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
