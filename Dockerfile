@@ -103,6 +103,7 @@ RUN ls -la
 # RUN chmod a+x ./dependency-check/bin/dependency-check.sh
 # RUN ./dependency-check/bin/dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
 # RUN ["chmod", "+x", "./dependency-check-script.sh"]
+USER root
 RUN chmod +x ./dependency-check-script.sh
 # RUN ./dependency-check-script.sh
 # COPY . ./proj
