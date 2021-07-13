@@ -91,12 +91,13 @@ RUN git clone https://github.com/sadiaashfaq2812/react-buggy.git .
 RUN ls -la 
 RUN hugo --gc --minify --enableGitInfo --destination=/source
 
-FROM ubuntu:16.04
+FROM openjdk:8
+# FROM ubuntu:16.04
 WORKDIR /proj
 COPY --from=hugo /source /proj
 COPY ./dependency-check ./dependency-check
 RUN ls -la
-RUN apt-get update && apt-get install -y curl wget openjdk-8-jdk
+# RUN apt-get update && apt-get install -y curl wget openjdk-8-jdk
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
 USER root
 RUN chmod +x ./dependency-check/bin/dependency-check.sh
