@@ -91,21 +91,22 @@ RUN git clone https://github.com/sadiaashfaq2812/react-buggy.git .
 RUN ls -la 
 RUN hugo --gc --minify --enableGitInfo --destination=/source
 
-# FROM ubuntu:16.04
-#trufflehog commands
-FROM dxa4481/trufflehog as trufflehogScan
+FROM ubuntu:16.04
 WORKDIR /proj
 COPY --from=hugo /source /proj
 # COPY ./dependency-check-script.sh /
 RUN ls -la
 RUN apt-get update && apt-get install -y curl wget openjdk-8-jdk
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
-# RUN whereis java
-# RUN find /usr/lib/jvm/java*
 USER root
 RUN chmod +x ./dependency-check/bin/dependency-check.sh
 RUN ./dependency-check/bin/dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
 
+#trufflehog commands
+FROM dxa4481/trufflehog as trufflehogScan
+WORKDIR /proj
+COPY --from=hugo /source /proj
+RUN ls -la
 # RUN ["chmod", "+x", "./dependency-check-script.sh"]
 
 # USER root
