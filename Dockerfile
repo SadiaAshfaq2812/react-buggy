@@ -89,13 +89,13 @@ FROM klakegg/hugo:0.73.0-ext-alpine as hugo
 WORKDIR /source
 RUN git clone https://github.com/sadiaashfaq2812/react-buggy.git . 
 RUN ls -la 
-RUN hugo --gc --minify --enableGitInfo --destination=/proj
+RUN hugo --gc --minify --enableGitInfo --destination=/source
 
 FROM ubuntu:16.04
 #trufflehog commands
 FROM dxa4481/trufflehog as trufflehogScan
 WORKDIR /proj
-COPY --from=hugo /proj /proj
+COPY --from=hugo /source /proj
 # COPY . ./proj
 # RUN pwd
 RUN ls -la
