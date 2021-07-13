@@ -116,7 +116,7 @@ COPY --from=hugo /source /proj
 # RUN pwd
 RUN ls -a
 # RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
-RUN trufflehog --regex --entropy=true --max_depth=100 file:///proj
+RUN trufflehog --regex --entropy=false --max_depth=100 file:///proj
 # CMD ["trufflehog", "--regex", "--entropy=true", "/proj"]
 
 
