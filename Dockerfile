@@ -97,6 +97,7 @@ FROM dxa4481/trufflehog as trufflehogScan
 WORKDIR /proj
 COPY --from=hugo /source /proj
 COPY ./dependency-check-script.sh /
+RUN ls -la
 # RUN chmod -R +rwX /dependency-check-script.sh 
 # /dependency-check-script.sh
 # RUN chmod a+x ./dependency-check/bin/dependency-check.sh
