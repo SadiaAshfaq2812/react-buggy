@@ -2,56 +2,35 @@ FROM klakegg/hugo:0.73.0-ext-alpine as hugo
 WORKDIR /source
 RUN git clone https://github.com/sadiaashfaq2812/react-buggy.git . 
 RUN ls -la 
-RUN hugo --gc --minify --enableGitInfo --destination=/proj
+RUN hugo --gc --minify --enableGitInfo --destination=/source
 
-FROM ubuntu:16.04
+# #dependency-check for checking vulnerable modules - done
+# FROM openjdk:8
+# WORKDIR /proj
+# COPY --from=hugo /source /proj
+# COPY ./dependency-check ./dependency-check
+# USER root
+# RUN chmod +x ./dependency-check/bin/dependency-check.sh
+# RUN ./dependency-check/bin/dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
+
 #trufflehog commands
-FROM dxa4481/trufflehog as trufflehogScan
-WORKDIR /proj
-COPY . ./proj
-# RUN pwd
-RUN ls -la
-RUN trufflehog --regex --entropy=false file:///proj
+# FROM dxa4481/trufflehog as trufflehogScan
+# WORKDIR /proj
+# COPY --from=hugo /source /proj
+# RUN ls -la
+# RUN trufflehog --regex --entropy False --max_depth 100 file:///proj
 
 # RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
 
 
-# FROM nginx
-# COPY deploy/default.conf.template /etc/nginx/conf.d/default.conf.template
-# COPY deploy/nginx.conf /etc/nginx/nginx.conf
-# COPY --from=hugo /target /usr/share/nginx/html
-# CMD /bin/sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'
-
-
-# FROM ubuntu:latest
-# WORKDIR /proj
-# RUN ls -a
-# COPY . ./
+FROM dxa4481/trufflehog as trufflehogScan
+WORKDIR /proj
+COPY --from=hugo /source /proj
 # RUN pwd
-# RUN ls
-# # COPY dependency-check-script.sh .
-# RUN ./dependency-check-script.sh
-
-# FROM node:12
-# RUN apk update && apk add bash
-# RUN apk add --no-cache bash
-# WORKDIR /proj
-# COPY . ./proj
-# RUN pwd
-# RUN ls
-# RUN pwd
-# RUN ./dependency-check-script.bash
-# # RUN pwd
-# RUN ./dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
-
-# FROM dxa4481/trufflehog as trufflehogScan
-# WORKDIR /proj
-# COPY . ./proj
-# # RUN pwd
-# RUN ls -a
-# # RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
-# RUN trufflehog --regex --entropy=true ./proj
-# # CMD ["trufflehog", "--regex", "--entropy=true", "/proj"]
+RUN ls -a
+# RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
+RUN trufflehog --regex --entropy=false --max_depth=100 file:///proj
+# CMD ["trufflehog", "--regex", "--entropy=true", "/proj"]
 
 
 FROM node:12
@@ -69,8 +48,6 @@ RUN npm install
 
 # add app
 COPY . ./
-
-# FROM trufflehogScan
 
 # Define environment variables for Cloud Run
 ENV PORT 3000
