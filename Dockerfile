@@ -98,7 +98,7 @@ COPY --from=hugo /source /proj
 COPY ./dependency-check ./dependency-check
 RUN ls -la
 # RUN apt-get update && apt-get install -y curl wget openjdk-8-jdk
-ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+# ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
 USER root
 RUN chmod +x ./dependency-check/bin/dependency-check.sh
 RUN ./dependency-check/bin/dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
