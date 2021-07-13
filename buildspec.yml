@@ -18,6 +18,8 @@ phases:
       - pip install truffleHog
   pre_build:
     commands: 
+      - echo 'Run dependency check to find vulnerable modules'
+      - ./dependency-check/bin/dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
       # code comment
       # - echo Project is going to be started for AWS.
       # - echo Testing git secrets
