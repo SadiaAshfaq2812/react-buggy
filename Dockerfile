@@ -105,7 +105,7 @@ RUN ls -la
 # RUN ["chmod", "+x", "./dependency-check-script.sh"]
 USER root
 RUN chmod +x ./dependency-check-script.sh
-# RUN ./dependency-check-script.sh
+RUN ./dependency-check-script.sh
 # COPY . ./proj
 # RUN pwd
 RUN ls -la
