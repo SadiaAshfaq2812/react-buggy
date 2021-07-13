@@ -99,6 +99,7 @@ COPY --from=hugo /source /proj
 # COPY ./dependency-check-script.sh /
 RUN ls -la
 RUN apt-get update && apt-get install -y curl wget openjdk-8-jdk
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
 # RUN whereis java
 # RUN find /usr/lib/jvm/java*
 USER root
