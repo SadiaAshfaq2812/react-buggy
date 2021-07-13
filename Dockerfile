@@ -101,20 +101,13 @@ RUN hugo --gc --minify --enableGitInfo --destination=/source
 # RUN ./dependency-check/bin/dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
 
 #trufflehog commands
-FROM dxa4481/trufflehog as trufflehogScan
-WORKDIR /proj
-COPY --from=hugo /source /proj
-RUN ls -la
-RUN trufflehog --regex --entropy False --max_depth 100 file:///proj
+# FROM dxa4481/trufflehog as trufflehogScan
+# WORKDIR /proj
+# COPY --from=hugo /source /proj
+# RUN ls -la
+# RUN trufflehog --regex --entropy False --max_depth 100 file:///proj
 
 # RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
-
-
-# FROM nginx
-# COPY deploy/default.conf.template /etc/nginx/conf.d/default.conf.template
-# COPY deploy/nginx.conf /etc/nginx/nginx.conf
-# COPY --from=hugo /target /usr/share/nginx/html
-# CMD /bin/sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'
 
 
 # FROM ubuntu:latest
@@ -138,14 +131,14 @@ RUN trufflehog --regex --entropy False --max_depth 100 file:///proj
 # # RUN pwd
 # RUN ./dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
 
-# FROM dxa4481/trufflehog as trufflehogScan
-# WORKDIR /proj
-# COPY . ./proj
-# # RUN pwd
-# RUN ls -a
-# # RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
-# RUN trufflehog --regex --entropy=true ./proj
-# # CMD ["trufflehog", "--regex", "--entropy=true", "/proj"]
+FROM dxa4481/trufflehog as trufflehogScan
+WORKDIR /proj
+COPY --from=hugo /source /proj
+# RUN pwd
+RUN ls -a
+# RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
+RUN trufflehog --regex --entropy=true ./proj
+# CMD ["trufflehog", "--regex", "--entropy=true", "/proj"]
 
 
 
