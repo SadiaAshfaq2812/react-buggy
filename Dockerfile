@@ -95,7 +95,8 @@ FROM ubuntu:16.04
 #trufflehog commands
 FROM dxa4481/trufflehog as trufflehogScan
 WORKDIR /proj
-COPY . ./proj
+COPY --from=hugo /proj /proj
+# COPY . ./proj
 # RUN pwd
 RUN ls -la ./proj
 RUN trufflehog --regex --entropy=false file:///proj
