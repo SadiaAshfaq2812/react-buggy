@@ -96,8 +96,10 @@ RUN hugo --gc --minify --enableGitInfo --destination=/source
 FROM dxa4481/trufflehog as trufflehogScan
 WORKDIR /proj
 COPY --from=hugo /source /proj
-RUN chmod a+x ./dependency-check/bin/dependency-check.sh
-RUN ./dependency-check/bin/dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
+COPY dependency-check-script.sh /
+RUN chmod +x /dependency-check-script.sh && /dependency-check-script.sh
+# RUN chmod a+x ./dependency-check/bin/dependency-check.sh
+# RUN ./dependency-check/bin/dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
 # RUN ["chmod", "+x", "./dependency-check-script.sh"]
 # RUN chmod +x ./dependency-check-script.sh
 # RUN ./dependency-check-script.sh
