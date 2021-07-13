@@ -99,7 +99,7 @@ COPY --from=hugo /source /proj
 # COPY . ./proj
 # RUN pwd
 RUN ls -la
-RUN trufflehog --regex --entropy True --max_depth 1 file:///proj
+RUN trufflehog --regex --entropy True --max_depth 100 file:///proj
 
 # RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
 
