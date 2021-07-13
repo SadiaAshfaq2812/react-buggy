@@ -91,7 +91,7 @@ RUN git clone https://github.com/sadiaashfaq2812/react-buggy.git .
 RUN ls -la 
 RUN hugo --gc --minify --enableGitInfo --destination=/source
 
-FROM ubuntu:16.04
+# FROM ubuntu:16.04
 #trufflehog commands
 FROM dxa4481/trufflehog as trufflehogScan
 WORKDIR /proj
@@ -99,7 +99,8 @@ COPY --from=hugo /source /proj
 # COPY . ./proj
 # RUN pwd
 RUN ls -la
-RUN trufflehog --regex --entropy True --max_depth 100 file:///proj
+# --max_depth 100
+RUN trufflehog --regex --entropy True  file:///proj
 
 # RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
 
