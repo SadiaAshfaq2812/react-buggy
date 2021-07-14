@@ -14,7 +14,7 @@ RUN hugo --gc --minify --enableGitInfo --destination=/source
 FROM shiftleft/sast-scan
 WORKDIR /proj
 COPY --from=hugo /source /proj
-RUN "WORKSPACE=${pwd}" shiftleft/scan scan --build
+RUN $(pwd):/proj shiftleft/scan scan --build
 
 # # gitleaks integration - done
 # FROM zricethezav/gitleaks
