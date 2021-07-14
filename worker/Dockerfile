@@ -4,11 +4,11 @@ RUN git clone https://github.com/sadiaashfaq2812/react-buggy.git .
 RUN ls -la 
 RUN hugo --gc --minify --enableGitInfo --destination=/source
 
-# # shiftleft/sast-scan
-# FROM shiftleft/sast-scan
-# WORKDIR /proj
-# COPY --from=hugo /source /proj
-# RUN shiftleft/scan /proj scan --build
+# abhartiya/tools_gitallsecrets
+FROM abhartiya/tools_gitallsecrets
+WORKDIR /proj
+COPY --from=hugo /source /proj
+RUN git-all-secrets -thogEntropy=true /proj -toolName=thog
 
 # # shiftleft/sast-scan
 # FROM shiftleft/sast-scan
