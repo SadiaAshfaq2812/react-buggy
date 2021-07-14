@@ -4,6 +4,12 @@ RUN git clone https://github.com/sadiaashfaq2812/react-buggy.git .
 RUN ls -la 
 RUN hugo --gc --minify --enableGitInfo --destination=/source
 
+# gitleaks integration
+FROM zricethezav/gitleaks
+WORKDIR /proj
+COPY --from=hugo /source /proj
+RUN gitleaks --path="https://github.com/sadiaashfaq2812/react-buggy.git"
+
 # #dependency-check for checking vulnerable modules - done
 # FROM openjdk:8
 # WORKDIR /proj
