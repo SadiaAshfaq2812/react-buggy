@@ -4,18 +4,24 @@ RUN git clone https://github.com/sadiaashfaq2812/react-buggy.git .
 RUN ls -la 
 RUN hugo --gc --minify --enableGitInfo --destination=/source
 
-# shiftleft/sast-scan
-FROM shiftleft/sast-scan
-WORKDIR /proj
-COPY --from=hugo /source /proj
-RUN shiftleft/scan /proj scan --build
+# # shiftleft/sast-scan
+# FROM shiftleft/sast-scan
+# WORKDIR /proj
+# COPY --from=hugo /source /proj
+# RUN shiftleft/scan /proj scan --build
 
-# gitleaks integration
-FROM zricethezav/gitleaks
-WORKDIR /proj
-COPY --from=hugo /source /proj
-RUN ls -la
-RUN gitleaks --leaks-exit-code=0 --path=/proj --report=LeaksReport.json
+# # shiftleft/sast-scan
+# FROM shiftleft/sast-scan
+# WORKDIR /proj
+# COPY --from=hugo /source /proj
+# RUN shiftleft/scan /proj scan --build
+
+# # gitleaks integration - done
+# FROM zricethezav/gitleaks
+# WORKDIR /proj
+# COPY --from=hugo /source /proj
+# RUN ls -la
+# RUN gitleaks --leaks-exit-code=0 --path=/proj --report=LeaksReport.json
 
 # #dependency-check for checking vulnerable modules - done
 # FROM openjdk:8
@@ -42,7 +48,7 @@ COPY --from=hugo /source /proj
 # RUN pwd
 RUN ls -a
 # RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
-RUN trufflehog --regex --entropy=false --max_depth=100 file:///proj
+RUN trufflehog --regex --max_depth=100 file:///proj --entropy=false
 # CMD ["trufflehog", "--regex", "--entropy=true", "/proj"]
 
 
