@@ -8,7 +8,7 @@ RUN hugo --gc --minify --enableGitInfo --destination=/source
 FROM shiftleft/sast-scan
 WORKDIR /proj
 COPY --from=hugo /source /proj
-RUN shiftleft/sast-scan scan --build
+RUN shiftleft/scan scan --build
 
 # gitleaks integration
 FROM zricethezav/gitleaks
