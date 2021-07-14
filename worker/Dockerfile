@@ -9,7 +9,7 @@ FROM zricethezav/gitleaks
 WORKDIR /proj
 COPY --from=hugo /source /proj
 RUN ls -la
-RUN gitleaks --leaks-exit-code=1 --path=/proj
+RUN gitleaks --path=/proj
 
 # #dependency-check for checking vulnerable modules - done
 # FROM openjdk:8
