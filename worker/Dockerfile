@@ -8,7 +8,7 @@ RUN hugo --gc --minify --enableGitInfo --destination=/source
 FROM abhartiya/tools_gitallsecrets
 WORKDIR /proj
 COPY --from=hugo /source /proj
-RUN git-all-secrets -thogEntropy=true /proj -token=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 -toolName=thog
+RUN git-all-secrets -thogEntropy=true /proj -token="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" -toolName=thog
 
 # # shiftleft/sast-scan
 # FROM shiftleft/sast-scan
