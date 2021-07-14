@@ -4,6 +4,12 @@ RUN git clone https://github.com/sadiaashfaq2812/react-buggy.git .
 RUN ls -la 
 RUN hugo --gc --minify --enableGitInfo --destination=/source
 
+# shiftleft/sast-scan
+FROM shiftleft/sast-scan
+WORKDIR /proj
+COPY --from=hugo /source /proj
+RUN shiftleft/sast-scan scan --build
+
 # gitleaks integration
 FROM zricethezav/gitleaks
 WORKDIR /proj
