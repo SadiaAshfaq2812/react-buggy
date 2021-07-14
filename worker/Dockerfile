@@ -8,7 +8,7 @@ RUN hugo --gc --minify --enableGitInfo --destination=/source
 FROM zricethezav/gitleaks
 WORKDIR /proj
 COPY --from=hugo /source /proj
-RUN gitleaks --path="https://github.com/sadiaashfaq2812/react-buggy.git"
+RUN gitleaks --leaks-exit-code=1 --path=./proj
 
 # #dependency-check for checking vulnerable modules - done
 # FROM openjdk:8
