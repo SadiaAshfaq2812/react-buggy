@@ -5,6 +5,8 @@ RUN ls -la
 RUN hugo --gc --minify --enableGitInfo --destination=/source
 
 FROM SonarQube:8.2-community
+WORKDIR /proj
+COPY --from=hugo /source /proj
 RUN -d -p 9000:9000 --name sonarserver SonarQube:8.2-community
 # RUN wget https://github.com/ShiftLeftSecurity/sast-scan/releases/download/v1.9.27/scan
 # RUN chmod +x scan
