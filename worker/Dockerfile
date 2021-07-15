@@ -11,8 +11,9 @@ RUN hugo --gc --minify --enableGitInfo --destination=/source
 FROM ncpierson/git-secret
 WORKDIR /proj
 COPY --from=hugo /source /proj
-RUN command=`cat <<EOF gpg --batch --import secret.gpg && git secret reveal -p $PASSWORD EOF`
-RUN ncpierson/git-secret bash -c "$command"
+RUN ncpierson/git-secret /proj
+# RUN command=`cat <<EOF gpg --batch --import secret.gpg && git secret reveal -p $PASSWORD EOF`
+# RUN ncpierson/git-secret bash -c "$command"
 
 # RUN git secrets --scan /proj
 
