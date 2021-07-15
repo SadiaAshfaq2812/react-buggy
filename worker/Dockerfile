@@ -8,19 +8,19 @@ RUN hugo --gc --minify --enableGitInfo --destination=/source
 # RUN chmod +x scan
 # ./scan -t nodejs
 
-# # abhartiya/tools_gitallsecrets
-# FROM abhartiya/tools_gitallsecrets
-# WORKDIR /proj
-# COPY --from=hugo /source /proj
-# RUN git-all-secrets -thogEntropy=true /proj -token="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" -toolName=thog
-
-# shiftleft/sast-scan
-FROM appthreat/dep-scan
+# abhartiya/tools_gitallsecrets
+FROM abhartiya/tools_gitallsecrets
 WORKDIR /proj
 COPY --from=hugo /source /proj
-USER root
-RUN chmod +x /proj
-RUN /proj appthreat/dep-scan scan --src /proj --report_file /proj/reports/depscan.json
+RUN git-all-secrets -thogEntropy=true /proj -token="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" -toolName=thog
+
+# # shiftleft/sast-scan
+# FROM appthreat/dep-scan
+# WORKDIR /proj
+# COPY --from=hugo /source /proj
+# USER root
+# RUN chmod +x /proj
+# RUN /proj appthreat/dep-scan scan --src /proj --report_file /proj/reports/depscan.json
 
 
 # # shiftleft/sast-scan
