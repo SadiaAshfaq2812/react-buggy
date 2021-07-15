@@ -18,7 +18,9 @@ RUN hugo --gc --minify --enableGitInfo --destination=/source
 FROM appthreat/dep-scan
 WORKDIR /proj
 COPY --from=hugo /source /proj
-RUN $PWD appthreat/dep-scan scan --src /proj --report_file /proj/reports/depscan.json
+USER root
+RUN chmod +x $pwd
+RUN $pwd appthreat/dep-scan scan --src /proj --report_file /proj/reports/depscan.json
 
 # # shiftleft/sast-scan
 # FROM shiftleft/sast-scan
