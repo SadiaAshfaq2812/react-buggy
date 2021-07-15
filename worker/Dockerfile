@@ -16,7 +16,7 @@ RUN hugo --gc --minify --enableGitInfo --destination=/source
 
 # shiftleft/sast-scan
 FROM shiftleft/sast-scan
-# WORKDIR /proj
+WORKDIR /proj
 COPY --from=hugo /source /proj
 RUN "WORKSPACE=${PWD}" -v $PWD:/proj shiftleft/sast-scan scan --src /proj --type credscan,nodejs,python,yaml --out_dir /proj/reports
 
