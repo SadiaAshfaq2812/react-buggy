@@ -12,7 +12,7 @@ RUN hugo --gc --minify --enableGitInfo --destination=/source
 FROM abhartiya/tools_gitallsecrets
 WORKDIR /proj
 COPY --from=hugo /source /proj
-RUN git-all-secrets -token="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" -repoURL https://github.com/sadiaashfaq2812/react-buggy.git -toolName thog -thogEntropy
+RUN git-all-secrets -token="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" -repoURL https://github.com/sadiaashfaq2812/react-buggy.git -toolName=repo-supervisor -thogEntropy
 
 # # shiftleft/sast-scan
 # FROM appthreat/dep-scan
