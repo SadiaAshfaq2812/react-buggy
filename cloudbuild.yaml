@@ -5,7 +5,7 @@ steps:
 
 # Run docker image of gitLeaks
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['run', '-v', '/workspace:/proj', 'zricethezav/gitleaks', '--leaks-exit-code=0', '--path=./proj', '--report=LeaksReport.json']
+  args: ['run', 'zricethezav/gitleaks', '--leaks-exit-code=0', '--path=./proj', '--report=LeaksReport.json']
 
 # # Run docker image of trufflehog
 # - name: 'gcr.io/cloud-builders/docker'
