@@ -7,49 +7,49 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['run', '-v', '/workspace:/proj', 'zricethezav/gitleaks', '--leaks-exit-code=0', '--path=/proj', '--report=LeaksReport.json']
 
-# Run docker image of trufflehog
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['run', '-v', '/workspace:/proj','dxa4481/trufflehog', '--regex', '--entropy=false','file:///proj']
-
-# Run dependency check
-- name: "gcr.io/cloud-builders/gcloud"
-  entrypoint: 'bash'
-  args: ['./dependency-check-script.sh','--foo']
-
-# # Build the trufflehog image
-# - name: 'gcr.io/thesisproject1859/trufflehog-actions-scan'
-#   args: ['build', '-t', 'gcr.io/thesisproject1859/trufflehog-actions-scan', '.']
-
-# Build docker image of nodejsscan
+# # Run docker image of trufflehog
 # - name: 'gcr.io/cloud-builders/docker'
-  # args: ['build', '-t', 'nodejsscan']
+#   args: ['run', '-v', '/workspace:/proj','dxa4481/trufflehog', '--regex', '--entropy=false','file:///proj']
 
-# Run docker image of nodejsscan
+# # Run dependency check
+# - name: "gcr.io/cloud-builders/gcloud"
+#   entrypoint: 'bash'
+#   args: ['./dependency-check-script.sh','--foo']
+
+# # # Build the trufflehog image
+# # - name: 'gcr.io/thesisproject1859/trufflehog-actions-scan'
+# #   args: ['build', '-t', 'gcr.io/thesisproject1859/trufflehog-actions-scan', '.']
+
+# # Build docker image of nodejsscan
+# # - name: 'gcr.io/cloud-builders/docker'
+#   # args: ['build', '-t', 'nodejsscan']
+
+# # Run docker image of nodejsscan
+# # - name: 'gcr.io/cloud-builders/docker'
+# #   args: ['run', '-i', '-p', '3000:3000', 'opensecurity/nodejsscan']
+
+# # Run docker image of ZAP
+# # - name: 'gcr.io/cloud-builders/docker'
+#   # args: ['run', '-t', 'owasp/zap2docker-stable', 'zap-baseline.py', '-t', 'https://react-eop2gprqzq-uc.a.run.app']
+# # docker run -t owasp/zap2docker-stable zap-baseline.py -t https://react-eop2gprqzq-uc.a.run.app
+
+#   # args: ['run', '-v', '/workspace:/zap/wrk/', '-t', 'owasp/zap2docker-weekly', 'zap-baseline.py', '\', '-t', 'https://example.com/', '\', '-z', '-configfile', '/zap/wrk/options.prop']
+
+# # Build the container image
 # - name: 'gcr.io/cloud-builders/docker'
-#   args: ['run', '-i', '-p', '3000:3000', 'opensecurity/nodejsscan']
+#   args: ['build', '-t', 'gcr.io/thesisproject1859/react', '.']
 
-# Run docker image of ZAP
+# # Push the container image to Container Registry
 # - name: 'gcr.io/cloud-builders/docker'
-  # args: ['run', '-t', 'owasp/zap2docker-stable', 'zap-baseline.py', '-t', 'https://react-eop2gprqzq-uc.a.run.app']
-# docker run -t owasp/zap2docker-stable zap-baseline.py -t https://react-eop2gprqzq-uc.a.run.app
+#   args: ['push', 'gcr.io/thesisproject1859/react']
 
-  # args: ['run', '-v', '/workspace:/zap/wrk/', '-t', 'owasp/zap2docker-weekly', 'zap-baseline.py', '\', '-t', 'https://example.com/', '\', '-z', '-configfile', '/zap/wrk/options.prop']
+# # Deploy container image to Cloud Run
+# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+#   entrypoint: gcloud
+#   args: ['run', 'deploy', 'react', '--image', 'gcr.io/thesisproject1859/react', '--port', '3000', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated']
 
-# Build the container image
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/thesisproject1859/react', '.']
+# # - name: 'gcr.io/thesisproject1859/sonar-scanner'
+#   # args: ['-Dsonar.host.url=https://sonarcloud.io', '-Dsonar.login={specify}', '-Dsonar.projectKey={specify}', '-Dsonar.organization={specify}', '-Dsonar.sources=.']
+# # tags: ['cloud-builders-community']
 
-# Push the container image to Container Registry
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/thesisproject1859/react']
-
-# Deploy container image to Cloud Run
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: gcloud
-  args: ['run', 'deploy', 'react', '--image', 'gcr.io/thesisproject1859/react', '--port', '3000', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated']
-
-# - name: 'gcr.io/thesisproject1859/sonar-scanner'
-  # args: ['-Dsonar.host.url=https://sonarcloud.io', '-Dsonar.login={specify}', '-Dsonar.projectKey={specify}', '-Dsonar.organization={specify}', '-Dsonar.sources=.']
-# tags: ['cloud-builders-community']
-
-# its my cloud build file.
+# # its my cloud build file.
