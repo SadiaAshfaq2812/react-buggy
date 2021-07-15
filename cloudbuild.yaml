@@ -2,6 +2,12 @@ steps:
 # docker run -d --name sonarqube -p 9000:9000 sonarqube:7.5-community
 # - name: 'gcr.io/cloud-builders/docker'
 #   args: ['run', '-d', '--name', 'sonarqube', '-p', '3000:3000', 'sonarqube:7.5-community']
+
+# Run docker image of gitLeaks
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['run', '-v', '/workspace:/proj', 'gitleaks', '--leaks-exit-code=0', '--path=file:///proj', '--report=LeaksReport.json']
+
+
 # Run docker image of trufflehog
 - name: 'gcr.io/cloud-builders/docker'
   args: ['run', '-v', '/workspace:/proj','dxa4481/trufflehog', '--regex', '--entropy=false','file:///proj']
