@@ -19,7 +19,7 @@ CMD [ "-h" ]
 FROM gruebel/retirejs
 WORKDIR /proj
 COPY --from=hugo /source /proj
-RUN gruebel/retirejs ./proj --ignorefile .retireignore
+RUN retire ./proj --ignorefile .retireignore
 
 FROM sonarqube
 WORKDIR /proj
