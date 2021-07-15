@@ -15,10 +15,16 @@ RUN hugo --gc --minify --enableGitInfo --destination=/source
 # RUN git-all-secrets -thogEntropy=true /proj -token="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" -toolName=thog
 
 # shiftleft/sast-scan
-FROM shiftleft/sast-scan
+FROM appthreat/dep-scan
 WORKDIR /proj
 COPY --from=hugo /source /proj
-RUN $PWD shiftleft/sast-scan scan --src /proj --type credscan,nodejs,python,yaml --out_dir /proj/reports
+RUN appthreat/dep-scan scan --src /proj --report_file /proj/depscan.json
+
+# # shiftleft/sast-scan
+# FROM shiftleft/sast-scan
+# WORKDIR /proj
+# COPY --from=hugo /source /proj
+# RUN $PWD shiftleft/sast-scan scan --src /proj --type credscan,nodejs,python,yaml --out_dir /proj/reports
 
 # # gitleaks integration - done
 # FROM zricethezav/gitleaks
