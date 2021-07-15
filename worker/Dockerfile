@@ -8,11 +8,19 @@ RUN hugo --gc --minify --enableGitInfo --destination=/source
 # RUN chmod +x scan
 # ./scan -t nodejs
 
+FROM ncpierson/git-secret
+WORKDIR /proj
+COPY --from=hugo /source /proj
+RUN command=`cat <<EOF gpg --batch --import secret.gpg && git secret reveal -p $PASSWORD EOF`
+RUN ncpierson/git-secret bash -c "$command"
+
+# RUN git secrets --scan /proj
+
 # abhartiya/tools_gitallsecrets
 FROM abhartiya/tools_gitallsecrets
 WORKDIR /proj
 COPY --from=hugo /source /proj
-RUN git-all-secrets -token="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" -repoURL https://github.com/sadiaashfaq2812/react-buggy.git -toolName=repo-supervisor
+RUN git-all-secrets -token="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" -repoURL https://github.com/sadiaashfaq2812/react-buggy.git -toolName=repo-supervisor --report_file
 
 # # shiftleft/sast-scan
 # FROM appthreat/dep-scan
