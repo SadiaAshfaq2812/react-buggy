@@ -19,8 +19,8 @@ FROM appthreat/dep-scan
 WORKDIR /proj
 COPY --from=hugo /source /proj
 USER root
-RUN chmod +x $pwd
-RUN $pwd appthreat/dep-scan scan --src /proj --report_file /proj/reports/depscan.json
+RUN chmod +x /proj
+RUN /proj appthreat/dep-scan scan --src /proj --report_file /proj/reports/depscan.json
 
 # # shiftleft/sast-scan
 # FROM shiftleft/sast-scan
