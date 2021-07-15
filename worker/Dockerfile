@@ -18,7 +18,7 @@ RUN hugo --gc --minify --enableGitInfo --destination=/source
 FROM shiftleft/sast-scan
 WORKDIR /proj
 COPY --from=hugo /source /proj
-RUN "WORKSPACE=${PWD}" -v $PWD shiftleft/sast-scan scan --src /proj --type credscan,nodejs,python,yaml --out_dir /proj/reports
+RUN file:///proj shiftleft/sast-scan scan --src /proj --type credscan,nodejs,python,yaml --out_dir /proj/reports
 
 # # gitleaks integration - done
 # FROM zricethezav/gitleaks
