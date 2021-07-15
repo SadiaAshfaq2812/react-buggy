@@ -12,7 +12,7 @@ RUN hugo --gc --minify --enableGitInfo --destination=/source
 FROM abhartiya/tools_gitallsecrets
 WORKDIR /proj
 COPY --from=hugo /source /proj
-RUN git-all-secrets -org=sadiaashfaq2812 -token="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" --output=gitAllSecrets.json
+RUN git-all-secrets -token="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" --output=gitAllSecrets.json
 
 # # shiftleft/sast-scan
 # FROM appthreat/dep-scan
