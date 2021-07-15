@@ -4,6 +4,17 @@ RUN git clone https://github.com/sadiaashfaq2812/react-buggy.git .
 RUN ls -la 
 RUN hugo --gc --minify --enableGitInfo --destination=/source
 
+#trufflehog dockerfile code
+FROM python:3-alpine
+RUN apk add --no-cache git && pip install gitdb2==3.0.0 trufflehog
+RUN adduser -S truffleHog
+USER truffleHog
+WORKDIR /proj
+COPY --from=hugo /source /proj
+ENTRYPOINT [ "trufflehog" ]
+CMD [ "-h" ]
+
+
 FROM gruebel/retirejs
 WORKDIR /proj
 COPY --from=hugo /source /proj
