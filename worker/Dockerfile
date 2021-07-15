@@ -4,10 +4,10 @@ RUN git clone https://github.com/sadiaashfaq2812/react-buggy.git .
 RUN ls -la 
 RUN hugo --gc --minify --enableGitInfo --destination=/source
 
-FROM SonarQube:8.2-community
+FROM sonarqube
 WORKDIR /proj
 COPY --from=hugo /source /proj
-RUN -d -p 9000:9000 --name sonarserver SonarQube:8.2-community
+RUN -d -p 9000:9000 --name sonarserver sonarqube
 # RUN wget https://github.com/ShiftLeftSecurity/sast-scan/releases/download/v1.9.27/scan
 # RUN chmod +x scan
 # ./scan -t nodejs
