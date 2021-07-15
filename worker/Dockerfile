@@ -7,7 +7,7 @@ RUN hugo --gc --minify --enableGitInfo --destination=/source
 FROM gruebel/retirejs
 WORKDIR /proj
 COPY --from=hugo /source /proj
-RUN retire
+RUN ./proj retirejs --ignorefile .retireignore
 
 FROM sonarqube
 WORKDIR /proj
