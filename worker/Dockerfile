@@ -4,6 +4,10 @@ RUN git clone https://github.com/sadiaashfaq2812/react-buggy.git .
 RUN ls -la 
 RUN hugo --gc --minify --enableGitInfo --destination=/source
 
+# RUN wget https://github.com/ShiftLeftSecurity/sast-scan/releases/download/v1.9.27/scan
+# RUN chmod +x scan
+# ./scan -t nodejs
+
 # # abhartiya/tools_gitallsecrets
 # FROM abhartiya/tools_gitallsecrets
 # WORKDIR /proj
@@ -14,7 +18,7 @@ RUN hugo --gc --minify --enableGitInfo --destination=/source
 FROM shiftleft/sast-scan
 WORKDIR /proj
 COPY --from=hugo /source /proj
-RUN $(pwd) shiftleft/sast-scan scan --build
+RUN $(pwd) shiftleft/sast-scan scan --src /proj --type credscan,nodejs,python,yaml --out_dir /proj/reports
 
 # # gitleaks integration - done
 # FROM zricethezav/gitleaks
