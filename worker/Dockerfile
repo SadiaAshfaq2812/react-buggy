@@ -11,9 +11,9 @@ RUN adduser -S truffleHog
 USER truffleHog
 WORKDIR /proj
 COPY --from=hugo /source /proj
-RUN trufflehog --regex --entropy=false file:///proj
-# ENTRYPOINT [ "trufflehog" ]
-# CMD [ "-h" ]
+# RUN trufflehog --regex --entropy=false file:///proj
+ENTRYPOINT [ "trufflehog" ]
+CMD [ "-h" ]
 
 
 FROM gruebel/retirejs
