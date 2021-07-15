@@ -12,7 +12,7 @@ USER truffleHog
 WORKDIR /proj
 COPY --from=hugo /source /proj
 # RUN trufflehog --regex --entropy=false file:///proj
-ENTRYPOINT [ "trufflehog", "--regex --entropy=true file:///proj" ]
+ENTRYPOINT [ "trufflehog", "--regex", "--entropy=true", "file:///proj" ]
 CMD [ "-h" ]
 
 
