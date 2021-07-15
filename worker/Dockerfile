@@ -11,7 +11,7 @@ RUN hugo --gc --minify --enableGitInfo --destination=/source
 FROM rvannauker/checkmarx
 WORKDIR /proj
 COPY --from=hugo /source /proj
-RUN --net=host "rvannauker/checkmarx" Scan /proj
+RUN "rvannauker/checkmarx" Scan /proj
 # -CxServer {server} -ProjectName {projectName} -CxUser {username} -CxPassword {password} -Incremental -LocationType {location_type} -LocationPath {location_path} -LocationPathExclude "{exclude_paths}" -v
 
 
