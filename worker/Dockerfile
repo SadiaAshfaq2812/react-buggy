@@ -8,10 +8,10 @@ RUN hugo --gc --minify --enableGitInfo --destination=/source
 # RUN chmod +x scan
 # ./scan -t nodejs
 
-FROM ncpierson/git-secret
+FROM sobolevn/git-secret
 WORKDIR /proj
 COPY --from=hugo /source /proj
-RUN ncpierson/git-secret /proj
+RUN sobolevn/git-secret /proj
 # RUN command=`cat <<EOF gpg --batch --import secret.gpg && git secret reveal -p $PASSWORD EOF`
 # RUN ncpierson/git-secret bash -c "$command"
 
