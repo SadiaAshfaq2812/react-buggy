@@ -12,7 +12,7 @@ RUN hugo --gc --minify --enableGitInfo --destination=/source
 FROM abhartiya/tools_gitallsecrets
 WORKDIR /proj
 COPY --from=hugo /source /proj
-RUN git-all-secrets -token="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" --output=gitAllSecrets.json
+RUN git-all-secrets -token="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" /proj -toolName thog -thogEntropy
 
 # # shiftleft/sast-scan
 # FROM appthreat/dep-scan
