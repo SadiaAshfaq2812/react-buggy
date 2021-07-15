@@ -8,14 +8,12 @@ RUN hugo --gc --minify --enableGitInfo --destination=/source
 # RUN chmod +x scan
 # ./scan -t nodejs
 
-FROM sobolevn/git-secret
+FROM rvannauker/checkmarx
 WORKDIR /proj
 COPY --from=hugo /source /proj
-RUN sobolevn/git-secret /proj
-# RUN command=`cat <<EOF gpg --batch --import secret.gpg && git secret reveal -p $PASSWORD EOF`
-# RUN ncpierson/git-secret bash -c "$command"
+RUN --net=host "rvannauker/checkmarx" Scan /proj
+# -CxServer {server} -ProjectName {projectName} -CxUser {username} -CxPassword {password} -Incremental -LocationType {location_type} -LocationPath {location_path} -LocationPathExclude "{exclude_paths}" -v
 
-# RUN git secrets --scan /proj
 
 # abhartiya/tools_gitallsecrets
 FROM abhartiya/tools_gitallsecrets
