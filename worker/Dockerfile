@@ -4,14 +4,6 @@ RUN git clone https://github.com/sadiaashfaq2812/react-buggy.git .
 RUN ls -la 
 RUN hugo --gc --minify --enableGitInfo --destination=/source
 
-#trufflehog commands
-FROM dxa4481/trufflehog
-WORKDIR /proj
-COPY --from=hugo /source /proj
-RUN ls -la
-# RUN trufflehog --regex --entropy False --max_depth 100 file:///proj
-RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy
-
 # gitleaks integration - done
 # FROM zricethezav/gitleaks
 # WORKDIR /proj
@@ -73,6 +65,16 @@ RUN git-all-secrets -token="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" -repoURL h
 # USER root
 # RUN chmod +x ./dependency-check/bin/dependency-check.sh
 # RUN ./dependency-check/bin/dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
+
+#trufflehog commands
+# FROM dxa4481/trufflehog as trufflehogScan
+# WORKDIR /proj
+# COPY --from=hugo /source /proj
+# RUN ls -la
+# RUN trufflehog --regex --entropy False --max_depth 100 file:///proj
+
+# RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
+
 
 FROM dxa4481/trufflehog as trufflehogScan
 WORKDIR /proj
