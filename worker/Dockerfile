@@ -5,11 +5,11 @@ RUN ls -la
 RUN hugo --gc --minify --enableGitInfo --destination=/source
 
 # gitleaks integration - done
-# FROM zricethezav/gitleaks
-# WORKDIR /proj
-# COPY --from=hugo /source /proj
-# RUN ls -la
-# RUN gitleaks --leaks-exit-code=0 --repo-url=https://github.com/sadiaashfaq2812/react-buggy -v --depth=100 --report=LeaksReport.json
+FROM zricethezav/gitleaks
+WORKDIR /proj
+COPY --from=hugo /source /proj
+RUN ls -la
+RUN gitleaks --leaks-exit-code=0 --repo-url=https://github.com/sadiaashfaq2812/react-buggy -v --depth=100 --report=LeaksReport.json
 
 FROM gruebel/retirejs
 WORKDIR /proj
