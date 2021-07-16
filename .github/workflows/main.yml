@@ -6,26 +6,27 @@ on:
   pull_request:
     branches: [ master ]
 jobs:
-  gitleaks:
-    name: 'Git leaks to scan code and highlight keys'
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - name: gitleaks-action
-      uses: zricethezav/gitleaks-action@master
+## gitleaks: done
+  # gitleaks:
+  #   name: 'Git leaks to scan code and highlight keys'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v1
+  #   - name: gitleaks-action
+  #     uses: zricethezav/gitleaks-action@master
 
-  sonarqube:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        # Disabling shallow clone is recommended for improving relevancy of reporting
-        fetch-depth: 0
-    - name: SonarQube Scan
-      uses: sonarsource/sonarqube-scan-action@master
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+  # sonarqube:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #     with:
+  #       # Disabling shallow clone is recommended for improving relevancy of reporting
+  #       fetch-depth: 0
+  #   - name: SonarQube Scan
+  #     uses: sonarsource/sonarqube-scan-action@master
+  #     env:
+  #       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  #       SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
   # dependency_check:
   #   runs-on: ubuntu-latest
   #   steps:
