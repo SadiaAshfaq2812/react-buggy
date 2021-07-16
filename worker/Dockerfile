@@ -12,7 +12,7 @@ COPY --from=hugo /source /proj
 RUN ls -la
 # RUN trufflehog --regex --entropy False --max_depth 100 file:///proj
 
-RUN trufflehog --regex --entropy=false --max_depth=100 https://github.com/sadiaashfaq2812/react-buggy.git
+RUN trufflehog --regex --entropy=false --max_depth=100 https://github.com/sadiaashfaq2812/react-buggy
 
 # gitleaks integration - done
 # FROM zricethezav/gitleaks
