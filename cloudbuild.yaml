@@ -5,7 +5,7 @@ steps:
 
 # Run docker image of gitLeaks
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['run', 'zricethezav/gitleaks', '-v', '/workspace:/proj', '--leaks-exit-code=0', '--depth=100', '--report=my-report.json']
+  args: ['run', 'zricethezav/gitleaks', '-v', '--path=/workspace:/proj', '--leaks-exit-code=0', '--depth=100', '--report=my-report.json']
   # args: ['run', '--name=gitleaks', '-v', '/workspace:/proj', 'zricethezav/gitleaks', '--leaks-exit-code=0', '--verbose', '--repo-path=https://github.com/sadiaashfaq2812/react-buggy.git', '--depth=1000', '--redact', '--threads=1', '--verbose']
 
 # # Run docker image of trufflehog
