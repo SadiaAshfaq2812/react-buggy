@@ -6,6 +6,14 @@ on:
   pull_request:
     branches: [ master ]
 jobs:
+  gitleaks:
+    name: 'Git leaks to scan code and highlight keys'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: gitleaks-action
+      uses: zricethezav/gitleaks-action@master
+
   sonarqube:
     runs-on: ubuntu-latest
     steps:
