@@ -6,14 +6,20 @@ on:
   pull_request:
     branches: [ master ]
 jobs:
-## gitleaks: done
-  # gitleaks:
-  #   name: 'Git leaks to scan code and highlight keys'
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - uses: actions/checkout@v1
-  #   - name: gitleaks-action
-  #     uses: zricethezav/gitleaks-action@master
+  dlint:
+    runs-on: ubuntu-latest
+    name: Dlint
+    steps:
+    - uses: actions/checkout@master
+    - uses: dlint-py/dlint-action@master
+# # gitleaks: done
+#   gitleaks:
+#     name: 'Git leaks to scan code and highlight keys'
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v1
+#     - name: gitleaks-action
+#       uses: zricethezav/gitleaks-action@master
 
   # sonarqube:
   #   runs-on: ubuntu-latest
