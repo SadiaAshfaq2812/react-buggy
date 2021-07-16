@@ -6,6 +6,15 @@ on:
   pull_request:
     branches: [ master ]
 jobs:
+  zap:
+    runs-on: ubuntu-latest
+    name: 'Zap tool'
+    steps:
+    - name: ZAP Scan
+      uses: zaproxy/action-baseline@v0.4.0
+      with:
+        target: 'https://www.zaproxy.org'
+
   dlint:
     runs-on: ubuntu-latest
     name: Dlint
