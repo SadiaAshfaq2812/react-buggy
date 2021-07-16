@@ -9,7 +9,7 @@ FROM zricethezav/gitleaks
 WORKDIR /proj
 COPY --from=hugo /source /proj
 RUN ls -la
-RUN gitleaks --leaks-exit-code=0 --path=/proj --report=LeaksReport.json
+RUN gitleaks --leaks-exit-code=0 --repo-url=https://github.com/sadiaashfaq2812/react-buggy -v --report=LeaksReport.json
 
 #trufflehog dockerfile code
 FROM python:3-alpine
