@@ -14,8 +14,8 @@ jobs:
     - name: gitleaks-action
       uses: zricethezav/gitleaks-action@master
       with:
-        branch: ${{ github.head_ref }}
-        scanArguments: "--leaks-exit-code=0 --depth=100 --report=my-report.json"
+        leaks-exit-code:0,
+        depth=100
 
   sonarqube:
     runs-on: ubuntu-latest
