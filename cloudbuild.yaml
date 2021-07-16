@@ -2,11 +2,14 @@ steps:
 # docker run -d --name sonarqube -p 9000:9000 sonarqube:7.5-community
 # - name: 'gcr.io/cloud-builders/docker'
 #   args: ['run', '-d', '--name', 'sonarqube', '-p', '3000:3000', 'sonarqube:7.5-community']
-
 # Run docker image of gitLeaks
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['run', 'zricethezav/gitleaks', '--repo-url=https://github.com/sadiaashfaq2812/react-buggy', '-v', '--leaks-exit-code=0', '--depth=100', '--report=my-report.json']
-  # args: ['run', '--name=gitleaks', '-v', '/workspace:/proj', 'zricethezav/gitleaks', '--leaks-exit-code=0', '--verbose', '--repo-path=https://github.com/sadiaashfaq2812/react-buggy.git', '--depth=1000', '--redact', '--threads=1', '--verbose']
+  args: ['run', '-p', '8090:8090', '-i', 'owasp/zap2docker-stable', 'zap.sh', '-daemon', '-port 8090', '-host 0.0.0.0']
+
+# # Run docker image of gitLeaks
+# - name: 'gcr.io/cloud-builders/docker'
+#   args: ['run', 'zricethezav/gitleaks', '--repo-url=https://github.com/sadiaashfaq2812/react-buggy', '-v', '--leaks-exit-code=0', '--depth=100', '--report=my-report.json']
+#   # args: ['run', '--name=gitleaks', '-v', '/workspace:/proj', 'zricethezav/gitleaks', '--leaks-exit-code=0', '--verbose', '--repo-path=https://github.com/sadiaashfaq2812/react-buggy.git', '--depth=1000', '--redact', '--threads=1', '--verbose']
 
 # # Run docker image of trufflehog
 # - name: 'gcr.io/cloud-builders/docker'
