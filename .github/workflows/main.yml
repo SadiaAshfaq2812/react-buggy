@@ -14,8 +14,8 @@ jobs:
     - name: gitleaks-action
       uses: zricethezav/gitleaks-action@master
       with:
-        # leaks-exit-code:0,
-        depth=100
+        leaks-exit-code:0,
+        depth:100
 
   sonarqube:
     runs-on: ubuntu-latest
