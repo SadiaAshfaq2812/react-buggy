@@ -15,10 +15,10 @@ steps:
 # - name: 'gcr.io/cloud-builders/docker'
 #   args: ['run', '-v', '/workspace:/proj','dxa4481/trufflehog', '--regex', '--entropy=false','file:///proj']
 
-# # Run dependency check
-# - name: "gcr.io/cloud-builders/gcloud"
-#   entrypoint: 'bash'
-#   args: ['./dependency-check-script.sh','--foo']
+# Run dependency check
+- name: "gcr.io/cloud-builders/gcloud"
+  entrypoint: 'bash'
+  args: ['./dependency-check-script.sh','--foo']
 
 # # # Build the trufflehog image
 # # - name: 'gcr.io/thesisproject1859/trufflehog-actions-scan'
