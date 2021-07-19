@@ -25,9 +25,10 @@ phases:
       # - chmod +x ./dependency-check/bin/dependency-check.sh
       # - ./dependency-check/bin/dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
       
-      - $ docker run -v /workspace:/proj gruebel/retirejs:latest
+      # - $ docker run -v /workspace:/proj gruebel/retirejs:latest
 
-      # - docker run -u zap -p 8080:8080 -p 8090:8090 -i owasp/zap2docker-stable zap-webswing.sh
+      # - docker run -u zap -p 8080:8080 -i owasp/zap2docker-stable zap-webswing.sh
+      - docker run -u zap -p 8080:8080 -i owasp/zap2docker-stable zap.sh -daemon -host 0.0.0.0 -port 8080
       # code comment
       # - echo Project is going to be started for AWS.
       # - echo Testing git secrets
