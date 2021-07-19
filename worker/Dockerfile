@@ -14,15 +14,18 @@ RUN hugo --gc --minify --enableGitInfo --destination=/source
 FROM gruebel/retirejs
 WORKDIR /proj
 COPY --from=hugo /source /proj
-RUN retire ./proj
+RUN retire 
+# https://github.com/sadiaashfaq2812/react-buggy.git
 
-FROM sonarqube
-WORKDIR /proj
-COPY --from=hugo /source /proj
-RUN sysctl -w vm.max_map_count=524288
-RUN sysctl -w fs.file-max=131072
-RUN ulimit -n 131072
-RUN ulimit -u 8192
+# docker run --rm -v $PWD:/app gruebel/retirejs:latest
+
+# FROM sonarqube
+# WORKDIR /proj
+# COPY --from=hugo /source /proj
+# RUN sysctl -w vm.max_map_count=524288
+# RUN sysctl -w fs.file-max=131072
+# RUN ulimit -n 131072
+# RUN ulimit -u 8192
 
 RUN -d -p 9000:9000 --name sonarserver sonarqube
 # RUN wget https://github.com/ShiftLeftSecurity/sast-scan/releases/download/v1.9.27/scan
