@@ -14,7 +14,8 @@ RUN hugo --gc --minify --enableGitInfo --destination=/source
 FROM gruebel/retirejs
 WORKDIR /proj
 COPY --from=hugo /source /proj
-RUN retire https://github.com/sadiaashfaq2812/react-buggy.git
+RUN retire 
+# https://github.com/sadiaashfaq2812/react-buggy.git
 
 # docker run --rm -v $PWD:/app gruebel/retirejs:latest
 
