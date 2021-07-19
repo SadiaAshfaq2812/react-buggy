@@ -1,4 +1,9 @@
 steps:
+# Run docker image for retire js
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['run', '-v', '/workspace:/proj', 'gruebel/retirejs']
+# $ docker run --rm -v $PWD:/app gruebel/retirejs:latest
+
 # docker run -d --name sonarqube -p 9000:9000 sonarqube:7.5-community
 # - name: 'gcr.io/cloud-builders/docker'
 #   args: ['run', '-d', '--name', 'sonarqube', '-p', '3000:3000', 'sonarqube:7.5-community']
@@ -39,18 +44,18 @@ steps:
 
 #   # args: ['run', '-v', '/workspace:/zap/wrk/', '-t', 'owasp/zap2docker-weekly', 'zap-baseline.py', '\', '-t', 'https://example.com/', '\', '-z', '-configfile', '/zap/wrk/options.prop']
 
-# Build the container image
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/thesisproject1859/react', '.']
+# # Build the container image - done
+# - name: 'gcr.io/cloud-builders/docker'
+#   args: ['build', '-t', 'gcr.io/thesisproject1859/react', '.']
 
-# Push the container image to Container Registry
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/thesisproject1859/react']
+# # Push the container image to Container Registry - done
+# - name: 'gcr.io/cloud-builders/docker'
+#   args: ['push', 'gcr.io/thesisproject1859/react']
 
-# Deploy container image to Cloud Run
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: gcloud
-  args: ['run', 'deploy', 'react', '--image', 'gcr.io/thesisproject1859/react', '--port', '3000', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated']
+# # Deploy container image to Cloud Run - done
+# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+#   entrypoint: gcloud
+#   args: ['run', 'deploy', 'react', '--image', 'gcr.io/thesisproject1859/react', '--port', '3000', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated']
 
 # # - name: 'gcr.io/thesisproject1859/sonar-scanner'
 #   # args: ['-Dsonar.host.url=https://sonarcloud.io', '-Dsonar.login={specify}', '-Dsonar.projectKey={specify}', '-Dsonar.organization={specify}', '-Dsonar.sources=.']
