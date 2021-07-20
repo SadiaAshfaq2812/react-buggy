@@ -1,28 +1,33 @@
 steps:
-# docker run -d --name sonarqube -p 9000:9000 sonarqube:7.5-community
-# - name: 'gcr.io/cloud-builders/docker'
-#   args: ['run', '-d', '--name', 'sonarqube', '-p', '3000:3000', 'sonarqube:7.5-community']
-# Run docker image of gitLeaks
+# # Run docker image of owasp/zap
 # - name: 'gcr.io/cloud-builders/docker'
 #   args: ['run', '-p', '8090:8090', '-i', 'owasp/zap2docker-stable', 'zap.sh', '-daemon', '-port 8090', '-host 0.0.0.0']
 
-# # Run docker image of gitLeaks
-# - name: 'gcr.io/cloud-builders/docker'
-#   args: ['run', 'zricethezav/gitleaks', '--repo-url=https://github.com/sadiaashfaq2812/react-buggy', '-v', '--leaks-exit-code=0', '--depth=100', '--report=my-report.json']
-#   # args: ['run', '--name=gitleaks', '-v', '/workspace:/proj', 'zricethezav/gitleaks', '--leaks-exit-code=0', '--verbose', '--repo-path=https://github.com/sadiaashfaq2812/react-buggy.git', '--depth=1000', '--redact', '--threads=1', '--verbose']
+# Run docker image of gitLeaks - done
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['run', 'zricethezav/gitleaks', '--repo-url=https://github.com/sadiaashfaq2812/react-buggy', '-v', '--leaks-exit-code=0', '--depth=100', '--report=my-report.json']
 
-# # Run docker image of trufflehog
-# - name: 'gcr.io/cloud-builders/docker'
-#   args: ['run', '-v', '/workspace:/proj','dxa4481/trufflehog', '--regex', '--entropy=false','file:///proj']
-
-# Run dependency check
+# Run dependency check - done
 - name: "gcr.io/cloud-builders/gcloud"
   entrypoint: 'bash'
   args: ['./dependency-check-script.sh','--foo']
 
-# # # Build the trufflehog image
-# # - name: 'gcr.io/thesisproject1859/trufflehog-actions-scan'
-# #   args: ['build', '-t', 'gcr.io/thesisproject1859/trufflehog-actions-scan', '.']
+# Run docker image of trufflehog - done
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['run', '-v', '/workspace:/proj','dxa4481/trufflehog', '--regex', '--entropy=false','file:///proj']
+
+# Build the container image - done
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/thesisproject1859/react', '.']
+
+# Push the container image to Container Registry - done
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/thesisproject1859/react']
+
+# Deploy container image to Cloud Run - done
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', 'react', '--image', 'gcr.io/thesisproject1859/react', '--port', '3000', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated']
 
 # # Build docker image of nodejsscan
 # # - name: 'gcr.io/cloud-builders/docker'
@@ -38,22 +43,3 @@ steps:
 # # docker run -t owasp/zap2docker-stable zap-baseline.py -t https://react-eop2gprqzq-uc.a.run.app
 
 #   # args: ['run', '-v', '/workspace:/zap/wrk/', '-t', 'owasp/zap2docker-weekly', 'zap-baseline.py', '\', '-t', 'https://example.com/', '\', '-z', '-configfile', '/zap/wrk/options.prop']
-
-# Build the container image
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/thesisproject1859/react', '.']
-
-# Push the container image to Container Registry
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/thesisproject1859/react']
-
-# Deploy container image to Cloud Run
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: gcloud
-  args: ['run', 'deploy', 'react', '--image', 'gcr.io/thesisproject1859/react', '--port', '3000', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated']
-
-# # - name: 'gcr.io/thesisproject1859/sonar-scanner'
-#   # args: ['-Dsonar.host.url=https://sonarcloud.io', '-Dsonar.login={specify}', '-Dsonar.projectKey={specify}', '-Dsonar.organization={specify}', '-Dsonar.sources=.']
-# # tags: ['cloud-builders-community']
-
-# # its my cloud build file.
