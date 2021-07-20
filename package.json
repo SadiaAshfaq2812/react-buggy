@@ -55,6 +55,7 @@
     "parse-link-header": "0.4.1",
     "react": "15.3.1",
     "react-dom": "15.3.1",
+    "retire": "^3.0.0",
     "showdown": "1.4.3",
     "trufflehog": "0.0.5",
     "whatwg-fetch": "1.0.0"
