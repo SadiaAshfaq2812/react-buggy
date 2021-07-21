@@ -1,3 +1,4 @@
+ls -la
 
 chmod +x ./dependency-check/bin/dependency-check.sh
 
