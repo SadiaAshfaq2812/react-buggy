@@ -1,4 +1,4 @@
-FROM node:14.x.x
+FROM node:12
 WORKDIR /app
 
 # add `/app/node_modules/.bin` to $PATH
@@ -8,9 +8,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json ./
 
 # COPY package-lock.json ./
-# RUN npm install
-
-RUN yarn
+RUN npm install
 
 # add app
 COPY . ./
