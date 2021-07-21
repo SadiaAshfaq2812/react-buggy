@@ -10,7 +10,7 @@ steps:
 # Run dependency check - done
 - name: "gcr.io/cloud-builders/gcloud"
   entrypoint: 'bash'
-  args: ['./dependency-check-script.sh','--foo']
+  args: ['./dependency-check-script.sh']
 
 # Run docker image of trufflehog - done
 - name: 'gcr.io/cloud-builders/docker'
