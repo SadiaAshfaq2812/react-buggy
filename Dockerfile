@@ -1,4 +1,4 @@
-FROM node:12
+FROM node:14.x.x
 WORKDIR /app
 
 # add `/app/node_modules/.bin` to $PATH
