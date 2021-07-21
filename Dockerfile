@@ -13,6 +13,8 @@ RUN npm install
 # add app
 COPY . ./
 
+COPY dependency-check-script.sh dependency-check-script.sh
+
 # Define environment variables for Cloud Run
 ENV PORT 3000
 ENV HOST 0.0.0.0
