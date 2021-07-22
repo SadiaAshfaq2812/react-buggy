@@ -22,7 +22,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 RUN npm install
 
 # add app
-COPY . ./
+COPY . /
 
 # Define environment variables for Cloud Run
 # ENV PORT 3000
