@@ -1,7 +1,14 @@
+FROM klakegg/hugo:0.73.0-ext-alpine as hugo
+WORKDIR /source
+RUN git clone https://github.com/sadiaashfaq2812/react-buggy.git . 
+RUN ls -la 
+RUN hugo --gc --minify --enableGitInfo --destination=/source
 
 FROM node:12
 # set working directory
 WORKDIR /app
+
+RUN ls -la
 
 # add `/app/node_modules/.bin` to $PATH
 ENV PATH /app/node_modules/.bin:$PATH
@@ -22,12 +29,6 @@ EXPOSE 3000
 
 # start app
 #CMD ["npm", "start"]
-
-# FROM klakegg/hugo:0.73.0-ext-alpine as hugo
-# WORKDIR /source
-# RUN git clone https://github.com/sadiaashfaq2812/react-buggy.git . 
-# RUN ls -la 
-# RUN hugo --gc --minify --enableGitInfo --destination=/source
 
 # # gitleaks integration - done
 # FROM zricethezav/gitleaks
