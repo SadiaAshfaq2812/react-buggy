@@ -40,7 +40,7 @@ RUN gitleaks --leaks-exit-code=0 --repo-url=https://github.com/sadiaashfaq2812/r
 FROM openjdk:8
 WORKDIR /proj
 COPY --from=hugo /source /proj
-# COPY ./dependency-check ./dependency-check
+COPY ./dependency-check ./dependency-check
 USER root
 RUN chmod +x ./dependency-check/bin/dependency-check.sh
 RUN ./dependency-check/bin/dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
