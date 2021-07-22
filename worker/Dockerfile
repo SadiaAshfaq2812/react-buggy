@@ -8,6 +8,8 @@ FROM node:12
 # set working directory
 WORKDIR /app
 
+COPY --from=hugo /source /app
+
 RUN ls -la
 
 # add `/app/node_modules/.bin` to $PATH
