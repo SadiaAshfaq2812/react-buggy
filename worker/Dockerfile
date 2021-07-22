@@ -30,7 +30,7 @@ ENV HOST 0.0.0.0
 # EXPOSE 3000
 
 # start app
-#CMD ["npm", "start"]
+CMD ["npm", "start"]
 
 # # gitleaks integration - done
 # FROM zricethezav/gitleaks
