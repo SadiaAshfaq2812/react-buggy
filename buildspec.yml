@@ -7,7 +7,7 @@ phases:
   pre_build:
     commands: 
       - echo 'owasp/zap commands'
-      - docker run -t owasp/zap2docker-stable zap-baseline.py -t https://github.com/sadiaashfaq2812/react-buggy.git
+      - docker run -t owasp/zap2docker-stable zap-baseline.py -t https://github.com/sadiaashfaq2812/react-buggy
       # - echo 'git leaks to find and highlight keys - done'
       # - docker run zricethezav/gitleaks --repo-url=https://github.com/sadiaashfaq2812/react-buggy -v --leaks-exit-code=0 --depth=100 --report=my-report.json
       
