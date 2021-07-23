@@ -4,9 +4,9 @@ steps:
 #   args: ['run', '-p', '8090:8090', '-i', 'owasp/zap2docker-stable', 'zap.sh', '-daemon', '-port 8090', '-host 0.0.0.0']
 
 
-# # Run docker image of ZAP
-# - name: 'gcr.io/cloud-builders/docker'
-#   args: ['run', '-t', 'owasp/zap2docker-stable', 'zap-baseline.py', '-t', 'https://react-eop2gprqzq-uc.a.run.app']
+# Run docker image of ZAP
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['run', '-t', 'owasp/zap2docker-stable', 'zap-baseline.py', '-t', 'https://react-eop2gprqzq-uc.a.run.app']
 # # # docker run -t owasp/zap2docker-stable zap-baseline.py -t https://react-eop2gprqzq-uc.a.run.app
 
 # Run docker image of gitLeaks - done
