@@ -23,7 +23,6 @@ jobs:
             -Dsonar.python.coverage.reportPaths=coverage.xml
             -Dsonar.sources=lib/
             -Dsonar.test.exclusions=tests/**
-            -Dsonar.tests=tests/
             -Dsonar.verbose=true
         env:
           GITHUB_TOKEN: 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  # Needed to get PR information, if any
