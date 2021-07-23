@@ -11,7 +11,7 @@ steps:
 
 # Run docker image of gitLeaks - done
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['run', 'zricethezav/gitleaks', '--repo-url=https://github.com/sadiaashfaq2812/react-buggy', '-v', '--leaks-exit-code=1', '--depth=100', '--report=my-report.json']
+  args: ['run', 'zricethezav/gitleaks', '--repo-url=https://github.com/sadiaashfaq2812/react-buggy', '-v', '--leaks-exit-code=1']
 
 # # Run dependency check - done
 # - name: "gcr.io/cloud-builders/gcloud"
