@@ -17,7 +17,6 @@ jobs:
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         with:
-          branch: ${{ github.head_ref }}
           args: >
             -Dsonar.organization=sadiaashfaq2812
             -Dsonar.projectKey=sadiaashfaq2812_react-buggy
