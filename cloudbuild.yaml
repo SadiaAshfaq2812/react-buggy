@@ -9,18 +9,18 @@ steps:
 #   args: ['run', '-t', 'owasp/zap2docker-stable', 'zap-baseline.py', '-t', 'https://react-eop2gprqzq-uc.a.run.app']
 # # # docker run -t owasp/zap2docker-stable zap-baseline.py -t https://react-eop2gprqzq-uc.a.run.app
 
-# # Run docker image of gitLeaks - done
-# - name: 'gcr.io/cloud-builders/docker'
-#   args: ['run', 'zricethezav/gitleaks', '--repo-url=https://github.com/sadiaashfaq2812/react-buggy', '-v', '--leaks-exit-code=0', '--depth=100', '--report=my-report.json']
+# Run docker image of gitLeaks - done
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['run', 'zricethezav/gitleaks', '--repo-url=https://github.com/sadiaashfaq2812/react-buggy', '-v', '--leaks-exit-code=0', '--depth=100', '--report=my-report.json']
 
-# Run dependency check - done
-- name: "gcr.io/cloud-builders/gcloud"
-  entrypoint: 'bash'
-  args: ['./dependency-check-script.sh','--foo']
+# # Run dependency check - done
+# - name: "gcr.io/cloud-builders/gcloud"
+#   entrypoint: 'bash'
+#   args: ['./dependency-check-script.sh','--foo']
 
-# # Run docker image of trufflehog - done
-# - name: 'gcr.io/cloud-builders/docker'
-#   args: ['run', '-v', '/workspace:/proj','dxa4481/trufflehog', '--regex', '--entropy=false','file:///proj']
+# Run docker image of trufflehog - done
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['run', '-v', '/workspace:/proj','dxa4481/trufflehog', '--regex', '--entropy=false','file:///proj']
 
 # Build the container image - done
 - name: 'gcr.io/cloud-builders/docker'
