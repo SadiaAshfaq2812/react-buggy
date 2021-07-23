@@ -39,14 +39,14 @@ CMD ["npm", "start"]
 # RUN ls -la
 # RUN gitleaks --leaks-exit-code=0 --repo-url=https://github.com/sadiaashfaq2812/react-buggy -v --depth=100 --report=LeaksReport.json
 
-# #dependency-check for checking vulnerable modules - done
-# FROM openjdk:8
-# WORKDIR /proj
-# COPY --from=hugo /source /proj
-# COPY ./dependency-check ./dependency-check
-# USER root
-# RUN chmod +x ./dependency-check/bin/dependency-check.sh
-# RUN ./dependency-check/bin/dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
+#dependency-check for checking vulnerable modules - done
+FROM openjdk:8
+WORKDIR /proj
+COPY --from=hugo /source /proj
+COPY ./dependency-check ./dependency-check
+USER root
+RUN chmod +x ./dependency-check/bin/dependency-check.sh
+RUN ./dependency-check/bin/dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
 
 
 # FROM dxa4481/trufflehog as trufflehogScan
