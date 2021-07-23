@@ -6,21 +6,33 @@ on:
   pull_request:
     branches: [ master ]
 jobs:
-  zap:
+  sonarcloud:
+    name: SonarCloud
     runs-on: ubuntu-latest
-    name: 'Zap tool'
     steps:
-    - name: ZAP Scan
-      uses: zaproxy/action-baseline@v0.4.0
-      with:
-        target: 'https://www.zaproxy.org'
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: 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  # Needed to get PR information, if any
+          SONAR_TOKEN: 6251c61c783c27d612e0b19b19fa7b48ecdf1487
+  # zap:
+  #   runs-on: ubuntu-latest
+  #   name: 'Zap tool'
+  #   steps:
+  #   - name: ZAP Scan
+  #     uses: zaproxy/action-baseline@v0.4.0
+  #     with:
+  #       target: 'https://www.zaproxy.org'
 
-  dlint:
-    runs-on: ubuntu-latest
-    name: Dlint
-    steps:
-    - uses: actions/checkout@master
-    - uses: dlint-py/dlint-action@master
+  # dlint:
+  #   runs-on: ubuntu-latest
+  #   name: Dlint
+  #   steps:
+  #   - uses: actions/checkout@master
+  #   - uses: dlint-py/dlint-action@master
 # # gitleaks: done
 #   gitleaks:
 #     name: 'Git leaks to scan code and highlight keys'
