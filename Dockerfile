@@ -13,6 +13,7 @@ RUN npm install
 # add app
 COPY . ./
 
+RUN ls -la
 # Define environment variables for Cloud Run
 ENV PORT 3000
 ENV HOST 0.0.0.0
