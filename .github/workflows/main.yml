@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ master ]
 jobs:
-  # sonarcloud github action
+  # sonarcloud github action - working
   sonarcloud:
     name: SonarCloud
     runs-on: ubuntu-latest
