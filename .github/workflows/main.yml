@@ -16,17 +16,9 @@ jobs:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
-        with:
-          args: >
-            -Dsonar.organization=sadiaashfaq2812
-            -Dsonar.projectKey=sadiaashfaq2812_react-buggy
-            -Dsonar.python.coverage.reportPaths=coverage.xml
-            -Dsonar.sources=./
-            -Dsonar.test.exclusions=tests/**
-            -Dsonar.verbose=true
         env:
           GITHUB_TOKEN: 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  # Needed to get PR information, if any
-          SONAR_TOKEN: 6251c61c783c27d612e0b19b19fa7b48ecdf1487
+          SONAR_TOKEN: 607100fadb18e14b3a9ba3e0fa27e6af26a89722
         
   # zap:
   #   runs-on: ubuntu-latest
