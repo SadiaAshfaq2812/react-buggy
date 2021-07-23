@@ -16,7 +16,6 @@ jobs:
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         with:
-          projectBaseDir: react-buggy
           args: >
             -Dsonar.organization=sadiaashfaq2812
             -Dsonar.projectKey=sadiaashfaq2812_react-buggy
