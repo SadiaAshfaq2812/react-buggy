@@ -21,7 +21,7 @@ jobs:
             -Dsonar.organization=sadiaashfaq2812
             -Dsonar.projectKey=sadiaashfaq2812_react-buggy
             -Dsonar.python.coverage.reportPaths=coverage.xml
-            -Dsonar.sources=lib/
+            -Dsonar.sources=./
             -Dsonar.test.exclusions=tests/**
             -Dsonar.verbose=true
         env:
