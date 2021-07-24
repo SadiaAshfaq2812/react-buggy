@@ -32,8 +32,8 @@ WORKDIR /proj
 COPY --from=hugo /source /proj
 # RUN pwd
 RUN ls -a
-# RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
-RUN trufflehog --regex --entropy=false file:///proj
+RUN trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
+# RUN trufflehog --regex --entropy=false file:///proj
 # CMD ["trufflehog", "--regex", "--entropy=true", "/proj"]
 
 # FROM owasp/zap2docker-stable
