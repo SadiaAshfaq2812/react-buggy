@@ -16,7 +16,7 @@ phases:
       # - echo 'Run dependency check to find vulnerable modules - done' 
       # - chmod +x ./dependency-check/bin/dependency-check.sh
       # - ./dependency-check/bin/dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
-      - echo 'Run trufflehog command'
+      - echo 'Run trufflehog'
       - docker run -v "/workspace:/proj" dxa4481/trufflehog file:///proj
       # - docker run -v $(pwd):/proj dxa4481/trufflehog --regex --entropy=false file:///proj
       # - docker run dxa4481/trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
