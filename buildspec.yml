@@ -17,8 +17,9 @@ phases:
       # - chmod +x ./dependency-check/bin/dependency-check.sh
       # - ./dependency-check/bin/dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
       - echo 'Run trufflehog command'
+      - docker run -v "$(pwd):/proj" dxa4481/trufflehog file:///proj
       # - docker run -v $(pwd):/proj dxa4481/trufflehog --regex --entropy=false file:///proj
-      - docker run dxa4481/trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
+      # - docker run dxa4481/trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
       # - docker run --rm -it --entrypoint='' gruebel/retirejs:latest npm outdated -g
       # - docker run -u zap -p 8080:8080 -p 8090:8090 -i owasp/zap2docker-stable zap-webswing.sh
   build:
