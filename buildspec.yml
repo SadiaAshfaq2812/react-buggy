@@ -7,7 +7,7 @@ phases:
   pre_build:
     commands: 
       - echo 'SonarScanner for Code Scanning using SonarCloud for result of SonarScanner'
-      - docker run -v /workspace:/usr/src sonarsource/sonar-scanner-cli sonar-scanner -Dsonar.projectBaseDir=/usr/src -Dsonar.sources=. -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=607100fadb18e14b3a9ba3e0fa27e6af26a89722 -Dsonar.projectKey=sadiaashfaq2812_react-buggy -Dsonar.organization=sadiaashfaq2812 -Dsonar.projectName=react-buggy
+      - docker run -v $(pwd):/usr/src sonarsource/sonar-scanner-cli sonar-scanner -Dsonar.projectBaseDir=/usr/src -Dsonar.sources=. -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=607100fadb18e14b3a9ba3e0fa27e6af26a89722 -Dsonar.projectKey=sadiaashfaq2812_react-buggy -Dsonar.organization=sadiaashfaq2812 -Dsonar.projectName=react-buggy
       # - echo 'owasp/zap commands'
       # - docker run -t owasp/zap2docker-stable zap-baseline.py -t https://ec2-100-26-178-102.compute-1.amazonaws.com/
       # - echo 'git leaks to find and highlight keys - done'
