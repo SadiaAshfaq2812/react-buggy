@@ -9,7 +9,7 @@ FROM sonarsource/sonar-scanner-cli:4.6
 WORKDIR /proj
 COPY --from=hugo /source /proj
 # RUN ls -la
-RUN sonar-scanner sonar.projectBaseDir=$(pwd) sonar.host.url="https://sonarcloud.io"
+RUN sonar-scanner -Dsonar.projectBaseDir=$(pwd) -Dsonar.host.url="https://sonarcloud.io" -Dsonar.projectKey=sadiaashfaq2812_react-buggy -Dsonar.organization=sadiaashfaq2812 -Dsonar.projectName=react-buggy
 # FROM owasp/zap2docker-stable
 # RUN -t owasp/zap2docker-stable zap-baseline.py -t https://react-eop2gprqzq-uc.a.run.app/
 
