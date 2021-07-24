@@ -4,8 +4,14 @@ RUN git clone https://github.com/sadiaashfaq2812/react-buggy.git .
 RUN ls -la 
 RUN hugo --gc --minify --enableGitInfo --destination=/source
 
-FROM owasp/zap2docker-stable
-RUN -t owasp/zap2docker-stable zap-baseline.py -t https://react-eop2gprqzq-uc.a.run.app/
+  
+FROM sonarsource/sonar-scanner-cli:4.6
+WORKDIR /proj
+COPY --from=hugo /source /proj
+# RUN ls -la
+RUN sonar-scanner -Dsonar.projectBaseDir=$(pwd) -Dsonar.host.url="https://sonarcloud.io"
+# FROM owasp/zap2docker-stable
+# RUN -t owasp/zap2docker-stable zap-baseline.py -t https://react-eop2gprqzq-uc.a.run.app/
 
 FROM node:12
 # set working directory
