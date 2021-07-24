@@ -5,7 +5,7 @@ steps:
 
 # Run docker image of sonar-scanner
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['run', sonarsource/sonar-scanner-cli:4.6, '-Dsonar.projectBaseDir=$(pwd)', '-Dsonar.host.url=https://sonarcloud.io', '-Dsonar.login=607100fadb18e14b3a9ba3e0fa27e6af26a89722', '-Dsonar.projectKey=sadiaashfaq2812_react-buggy', '-Dsonar.organization=sadiaashfaq2812', '-Dsonar.projectName=react-buggy']
+  args: ['run', sonar-scanner, '-Dsonar.projectBaseDir=$(pwd)', '-Dsonar.host.url=https://sonarcloud.io', '-Dsonar.login=607100fadb18e14b3a9ba3e0fa27e6af26a89722', '-Dsonar.projectKey=sadiaashfaq2812_react-buggy', '-Dsonar.organization=sadiaashfaq2812', '-Dsonar.projectName=react-buggy']
 
   # Run docker image of ZAP
 - name: 'gcr.io/cloud-builders/docker'
