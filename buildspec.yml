@@ -17,8 +17,8 @@ phases:
       # - chmod +x ./dependency-check/bin/dependency-check.sh
       # - ./dependency-check/bin/dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
       
-      # - echho 'Run trufflehog'
-      # - docker run -v /workspace:/proj dxa4481/trufflehog --regex --entropy=false --max_depth=100 file:///proj
+      - echho 'Run trufflehog'
+      - docker run -v $(pwd):/proj dxa4481/trufflehog --regex --entropy=false --max_depth=100 file:///proj
       
       # - docker run dxa4481/trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
       # - docker run --rm -it --entrypoint='' gruebel/retirejs:latest npm outdated -g
