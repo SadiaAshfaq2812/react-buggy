@@ -32,7 +32,8 @@ WORKDIR /proj
 COPY --from=hugo /source /proj
 # RUN pwd
 RUN ls -a
-RUN trufflehog --json --regex --entropy=true --max_depth=100 https://github.com/sadiaashfaq2812/react-buggy.git
+RUN trufflehog https://github.com/sadiaashfaq2812/react-buggy.git
+# /*--json --regex --entropy=true --max_depth=100 */
 # RUN trufflehog --regex --entropy=false file:///proj
 # CMD ["trufflehog", "--regex", "--entropy=true", "/proj"]
 
