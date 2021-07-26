@@ -17,25 +17,25 @@ RUN hugo --gc --minify --enableGitInfo --destination=/source
 # COPY --from=hugo /source /proj
 # RUN sonar-scanner -Dsonar.projectBaseDir=$(pwd) -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=607100fadb18e14b3a9ba3e0fa27e6af26a89722 
 
-# Trufflehog to checking keys - done
-FROM dxa4481/trufflehog as trufflehogScan
-WORKDIR /proj
-COPY --from=hugo /source /proj
-# RUN pwd
-RUN ls -a
-RUN trufflehog https://github.com/sadiaashfaq2812/react-buggy.git
+# # Trufflehog to checking keys - done
+# FROM dxa4481/trufflehog as trufflehogScan
+# WORKDIR /proj
+# COPY --from=hugo /source /proj
+# # RUN pwd
+# RUN ls -a
+# RUN trufflehog https://github.com/sadiaashfaq2812/react-buggy.git
 # /*--json --regex --entropy=true --max_depth=100 */
 # RUN trufflehog --regex --entropy=false file:///proj
 # CMD ["trufflehog", "--regex", "--entropy=true", "/proj"]
 
-# # dependency-check for checking vulnerable modules - done
-# FROM openjdk:8
-# WORKDIR /proj
-# COPY --from=hugo /source /proj
-# # COPY /dependency-check /dependency-check
-# USER root
-# RUN chmod +x ./dependency-check/bin/dependency-check.sh
-# RUN ./dependency-check/bin/dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
+# dependency-check for checking vulnerable modules - done
+FROM openjdk:8
+WORKDIR /proj
+COPY --from=hugo /source /proj
+# COPY /dependency-check /dependency-check
+USER root
+RUN chmod +x ./dependency-check/bin/dependency-check.sh
+RUN ./dependency-check/bin/dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
 
 # FROM owasp/zap2docker-stable
 # RUN -t owasp/zap2docker-stable zap-baseline.py -t https://react-eop2gprqzq-uc.a.run.app/
