@@ -3,9 +3,9 @@ steps:
 # - name: 'gcr.io/cloud-builders/docker'
 #   args: ['run', '-p', '8090:8090', '-i', 'owasp/zap2docker-stable', 'zap.sh', '-daemon', '-port 8090', '-host 0.0.0.0']
 
-# Run docker image of sonar-scanner
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['run', '-v', '/workspace:/usr/src' ,sonarsource/sonar-scanner-cli, sonar-scanner, '-Dsonar.projectBaseDir=/usr/src', '-Dsonar.sources=.', '-Dsonar.host.url=https://sonarcloud.io', '-Dsonar.login=607100fadb18e14b3a9ba3e0fa27e6af26a89722', '-Dsonar.projectKey=sadiaashfaq2812_react-buggy', '-Dsonar.organization=sadiaashfaq2812', '-Dsonar.projectName=react-buggy']
+# # Run docker image of sonar-scanner
+# - name: 'gcr.io/cloud-builders/docker'
+#   args: ['run', '-v', '/workspace:/usr/src' ,sonarsource/sonar-scanner-cli, sonar-scanner, '-Dsonar.projectBaseDir=/usr/src', '-Dsonar.sources=.', '-Dsonar.host.url=https://sonarcloud.io', '-Dsonar.login=607100fadb18e14b3a9ba3e0fa27e6af26a89722', '-Dsonar.projectKey=sadiaashfaq2812_react-buggy', '-Dsonar.organization=sadiaashfaq2812', '-Dsonar.projectName=react-buggy']
 
 # # Run docker image of ZAP
 # - name: 'gcr.io/cloud-builders/docker'
@@ -21,9 +21,9 @@ steps:
 #   entrypoint: 'bash'
 #   args: ['./dependency-check-script.sh','--foo']
 
-# # Run docker image of trufflehog - done
-# - name: 'gcr.io/cloud-builders/docker'
-#   args: ['run', '-v', '/workspace:/proj','dxa4481/trufflehog', '--regex', '--entropy=false','file:///proj']
+# Run docker image of trufflehog - done
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['run', '-v', '/workspace:/proj','dxa4481/trufflehog', '--regex', '--entropy=true','file:///proj']
 
 # Build the container image - done
 - name: 'gcr.io/cloud-builders/docker'
