@@ -9,7 +9,7 @@ FROM zricethezav/gitleaks
 WORKDIR /proj
 COPY --from=hugo /source /proj
 RUN ls -la
-RUN gitleaks --leaks-exit-code=0 --repo-url=https://github.com/sadiaashfaq2812/react-buggy -v --depth=100
+RUN gitleaks --leaks-exit-code=1 --repo-url=https://github.com/sadiaashfaq2812/react-buggy -v --depth=100
 
 # # SonarScanner integration for code scanning and results on SonarCloud- done
 # FROM sonarsource/sonar-scanner-cli:4.6
