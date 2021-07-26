@@ -7,7 +7,7 @@ phases:
   pre_build:
     commands: 
       - echo 'git leaks to find and highlight keys - done'
-      - docker run zricethezav/gitleaks --repo-url=https://github.com/sadiaashfaq2812/react-buggy -v --leaks-exit-code=1 --depth=100
+      - docker run zricethezav/gitleaks --repo-url=https://github.com/sadiaashfaq2812/react-buggy -v --leaks-exit-code=1 --depth=200
       # - echo 'SonarScanner for Code Scanning using SonarCloud for result of SonarScanner - done'
       # - docker run -v $(pwd):/usr/src sonarsource/sonar-scanner-cli sonar-scanner -Dsonar.projectBaseDir=/usr/src -Dsonar.sources=. -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=607100fadb18e14b3a9ba3e0fa27e6af26a89722 -Dsonar.projectKey=sadiaashfaq2812_react-buggy -Dsonar.organization=sadiaashfaq2812 -Dsonar.projectName=react-buggy
       # - echo 'Run dependency check to find vulnerable modules - done' 
