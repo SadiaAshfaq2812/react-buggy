@@ -1,8 +1,8 @@
-# FROM klakegg/hugo:0.73.0-ext-alpine as hugo
-# WORKDIR /source
-# RUN git clone https://github.com/sadiaashfaq2812/react-buggy.git . 
-# RUN ls -la 
-# RUN hugo --gc --minify --enableGitInfo --destination=/source
+FROM klakegg/hugo:0.73.0-ext-alpine as hugo
+WORKDIR /source
+RUN git clone https://github.com/sadiaashfaq2812/react-buggy.git . 
+RUN ls -la 
+RUN hugo --gc --minify --enableGitInfo --destination=/source
 
 # # gitleaks integration - done
 # FROM zricethezav/gitleaks
