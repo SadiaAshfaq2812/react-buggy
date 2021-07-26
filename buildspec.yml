@@ -14,7 +14,7 @@ phases:
       # - chmod +x ./dependency-check/bin/dependency-check.sh
       - echo 'Run trufflehog command'
       # # - docker run -v $(pwd):/proj dxa4481/trufflehog --regex --entropy=false file:///proj
-      - docker run dxa4481/trufflehog --regex --entropy=false https://github.com/sadiaashfaq2812/react-buggy.git
+      - docker run dxa4481/trufflehog https://github.com/sadiaashfaq2812/react-buggy.git
       # - ./dependency-check/bin/dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
       # - echo 'owasp/zap commands'
       # - docker run -t owasp/zap2docker-stable zap-baseline.py -t https://ec2-100-26-178-102.compute-1.amazonaws.com/ 
