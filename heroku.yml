@@ -17,8 +17,8 @@ run:
 
 release:
   image: web
-  command:
-    - npm run migrate up
+  # command:
+  #   - npm run migrate up
 
 
 
