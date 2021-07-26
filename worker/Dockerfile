@@ -11,19 +11,19 @@ RUN hugo --gc --minify --enableGitInfo --destination=/source
 # RUN ls -la
 # RUN gitleaks --leaks-exit-code=1 --repo-url=https://github.com/sadiaashfaq2812/react-buggy -v --depth=100
 
-# SonarScanner integration for code scanning and results on SonarCloud- done
-FROM sonarsource/sonar-scanner-cli:4.6
-WORKDIR /proj
-COPY --from=hugo /source /proj
-RUN sonar-scanner -Dsonar.projectBaseDir=$(pwd) -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=607100fadb18e14b3a9ba3e0fa27e6af26a89722 
-
-# # Trufflehog to checking keys - done
-# FROM dxa4481/trufflehog as trufflehogScan
+# # SonarScanner integration for code scanning and results on SonarCloud- done
+# FROM sonarsource/sonar-scanner-cli:4.6
 # WORKDIR /proj
 # COPY --from=hugo /source /proj
-# # RUN pwd
-# RUN ls -a
-# RUN trufflehog https://github.com/sadiaashfaq2812/react-buggy.git
+# RUN sonar-scanner -Dsonar.projectBaseDir=$(pwd) -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=607100fadb18e14b3a9ba3e0fa27e6af26a89722 
+
+# Trufflehog to checking keys - done
+FROM dxa4481/trufflehog as trufflehogScan
+WORKDIR /proj
+COPY --from=hugo /source /proj
+# RUN pwd
+RUN ls -a
+RUN trufflehog https://github.com/sadiaashfaq2812/react-buggy.git
 # /*--json --regex --entropy=true --max_depth=100 */
 # RUN trufflehog --regex --entropy=false file:///proj
 # CMD ["trufflehog", "--regex", "--entropy=true", "/proj"]
