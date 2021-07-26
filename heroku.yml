@@ -15,10 +15,10 @@ run:
   web: npm run start
   web: ls
 
-# release:
-#   image: web
-#   command:
-#     - npm run migrate up
+release:
+  image: web
+  command:
+    - npm run migrate up
 
 
 
