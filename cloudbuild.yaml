@@ -16,10 +16,10 @@ steps:
 # - name: 'gcr.io/cloud-builders/docker'
 #   args: ['run', 'zricethezav/gitleaks', '--repo-url=https://github.com/sadiaashfaq2812/react-buggy', '-v', '--leaks-exit-code=1']
 
-# Run dependency check - done
-- name: "gcr.io/cloud-builders/gcloud"
-  entrypoint: 'bash'
-  args: ['./dependency-check-script.sh','--foo']
+# # Run dependency check - done
+# - name: "gcr.io/cloud-builders/gcloud"
+#   entrypoint: 'bash'
+#   args: ['./dependency-check-script.sh','--foo']
 
 # # Run docker image of trufflehog - done
 # - name: 'gcr.io/cloud-builders/docker'

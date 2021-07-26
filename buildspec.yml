@@ -8,14 +8,18 @@ phases:
     commands: 
       # - echo 'git leaks to find and highlight keys - done'
       # - docker run zricethezav/gitleaks --repo-url=https://github.com/sadiaashfaq2812/react-buggy -v --leaks-exit-code=1 --depth=200
+      
       # - echo 'SonarScanner for Code Scanning using SonarCloud for result of SonarScanner - done'
       # - docker run -v $(pwd):/usr/src sonarsource/sonar-scanner-cli sonar-scanner -Dsonar.projectBaseDir=/usr/src -Dsonar.sources=. -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=607100fadb18e14b3a9ba3e0fa27e6af26a89722 -Dsonar.projectKey=sadiaashfaq2812_react-buggy -Dsonar.organization=sadiaashfaq2812 -Dsonar.projectName=react-buggy
+      
       # - echo 'Run trufflehog command'
       # # - docker run -v $(pwd):/proj dxa4481/trufflehog --regex --entropy=false file:///proj
       # - docker run dxa4481/trufflehog https://github.com/sadiaashfaq2812/react-buggy.git
-      - echo 'Run dependency check to find vulnerable modules - done' 
-      - chmod +x ./dependency-check/bin/dependency-check.sh
-      - ./dependency-check/bin/dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
+      
+      # - echo 'Run dependency check to find vulnerable modules - done' 
+      # - chmod +x ./dependency-check/bin/dependency-check.sh
+      # - ./dependency-check/bin/dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
+      
       # - echo 'owasp/zap commands'
       # - docker run -t owasp/zap2docker-stable zap-baseline.py -t https://ec2-100-26-178-102.compute-1.amazonaws.com/ 
       # - docker run --rm -it --entrypoint='' gruebel/retirejs:latest npm outdated -g
