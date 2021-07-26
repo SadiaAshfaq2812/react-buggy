@@ -28,14 +28,14 @@ RUN hugo --gc --minify --enableGitInfo --destination=/source
 # RUN trufflehog --regex --entropy=false file:///proj
 # CMD ["trufflehog", "--regex", "--entropy=true", "/proj"]
 
-# dependency-check for checking vulnerable modules - done
-FROM openjdk:8
-WORKDIR /proj
-COPY --from=hugo /source /proj
-# COPY /dependency-check /dependency-check
-USER root
-RUN chmod +x ./dependency-check/bin/dependency-check.sh
-RUN ./dependency-check/bin/dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
+# # dependency-check for checking vulnerable modules - done
+# FROM openjdk:8
+# WORKDIR /proj
+# COPY --from=hugo /source /proj
+# # COPY /dependency-check /dependency-check
+# USER root
+# RUN chmod +x ./dependency-check/bin/dependency-check.sh
+# RUN ./dependency-check/bin/dependency-check.sh --project react-project --scan ./ --out ModuleVulnerabilities
 
 # FROM owasp/zap2docker-stable
 # RUN -t owasp/zap2docker-stable zap-baseline.py -t https://react-eop2gprqzq-uc.a.run.app/
