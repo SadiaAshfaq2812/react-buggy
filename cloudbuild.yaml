@@ -3,18 +3,18 @@ steps:
 # - name: 'gcr.io/cloud-builders/docker'
 #   args: ['run', '-p', '8090:8090', '-i', 'owasp/zap2docker-stable', 'zap.sh', '-daemon', '-port 8090', '-host 0.0.0.0']
 
-# # Run docker image of sonar-scanner
-# - name: 'gcr.io/cloud-builders/docker'
-#   args: ['run', '-v', '/workspace:/usr/src' ,sonarsource/sonar-scanner-cli, sonar-scanner, '-Dsonar.projectBaseDir=/usr/src', '-Dsonar.sources=.', '-Dsonar.host.url=https://sonarcloud.io', '-Dsonar.login=607100fadb18e14b3a9ba3e0fa27e6af26a89722', '-Dsonar.projectKey=sadiaashfaq2812_react-buggy', '-Dsonar.organization=sadiaashfaq2812', '-Dsonar.projectName=react-buggy']
+# Run docker image of sonar-scanner
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['run', '-v', '/workspace:/usr/src' ,sonarsource/sonar-scanner-cli, sonar-scanner, '-Dsonar.projectBaseDir=/usr/src', '-Dsonar.sources=.', '-Dsonar.host.url=https://sonarcloud.io', '-Dsonar.login=607100fadb18e14b3a9ba3e0fa27e6af26a89722', '-Dsonar.projectKey=sadiaashfaq2812_react-buggy', '-Dsonar.organization=sadiaashfaq2812', '-Dsonar.projectName=react-buggy']
 
 # # Run docker image of ZAP
 # - name: 'gcr.io/cloud-builders/docker'
 #   args: ['run', '-t', 'owasp/zap2docker-stable', 'zap-baseline.py', '-t', 'https://react-eop2gprqzq-uc.a.run.app']
 # # # docker run -t owasp/zap2docker-stable zap-baseline.py -t https://react-eop2gprqzq-uc.a.run.app
 
-# Run docker image of gitLeaks - done
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['run', 'zricethezav/gitleaks', '--repo-url=https://github.com/sadiaashfaq2812/react-buggy', '-v', '--leaks-exit-code=1']
+# # Run docker image of gitLeaks - done
+# - name: 'gcr.io/cloud-builders/docker'
+#   args: ['run', 'zricethezav/gitleaks', '--repo-url=https://github.com/sadiaashfaq2812/react-buggy', '-v', '--leaks-exit-code=1']
 
 # # Run dependency check - done
 # - name: "gcr.io/cloud-builders/gcloud"
