@@ -52,7 +52,7 @@
     "elasticlunr": "0.9.0",
     "lovefield": "2.1.9",
     "moment": "2.14.1",
-    "parse-link-header": "0.4.1",
+    "parse-link-header": "2.0.0",
     "react": "15.3.1",
     "react-dom": "15.3.1",
     "retire": "^3.0.0",
