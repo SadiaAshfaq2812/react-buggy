@@ -56,7 +56,7 @@
     "react": "15.3.1",
     "react-dom": "15.3.1",
     "retire": "^3.0.0",
-    "showdown": "1.4.3",
+    "showdown": "1.9.1",
     "trufflehog": "0.0.5",
     "whatwg-fetch": "1.0.0"
   }
