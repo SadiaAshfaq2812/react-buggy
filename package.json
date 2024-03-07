@@ -46,7 +46,7 @@
     "webpack-dev-server": "1.15.0"
   },
   "dependencies": {
-    "@wdio/cli": "^7.7.1",
+    "@wdio/cli": "^8.33.0",
     "chai-webdriver": "^1.2.3",
     "chai-webdriverio": "^1.0.0",
     "elasticlunr": "0.9.0",
