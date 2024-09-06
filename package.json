@@ -46,7 +46,7 @@
     "webpack-dev-server": "1.15.0"
   },
   "dependencies": {
-    "@wdio/cli": "^7.7.1",
+    "@wdio/cli": "^9.0.0",
     "chai-webdriver": "^1.2.3",
     "chai-webdriverio": "^1.0.0",
     "elasticlunr": "0.9.0",
@@ -55,7 +55,7 @@
     "parse-link-header": "0.4.1",
     "react": "15.3.1",
     "react-dom": "15.3.1",
-    "retire": "^3.0.0",
+    "retire": "^4.0.0",
     "showdown": "1.4.3",
     "trufflehog": "0.0.5",
     "whatwg-fetch": "1.0.0"
